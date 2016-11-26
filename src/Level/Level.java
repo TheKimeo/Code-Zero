@@ -2,7 +2,11 @@ package Level;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Controller.Camera;
 import Entity.Entity;
@@ -14,8 +18,8 @@ public class Level {
 	
 	private ArrayList<Tile> map;
 	
-	private static Tile TILE_WALL = new Tile(true, true, 0.1152, 0.1152, new Color(100, 200, 100));
-	private static Tile TILE_AIR = new Tile(false, false, 0.1152, 0.03456, new Color(200, 200, 255));
+	private static Tile TILE_WALL = new Tile(true, true, 0.1152, 0.1152, new Color(100, 200, 100), '#');
+	private static Tile TILE_AIR = new Tile(false, false, 0.1152, 0.03456, new Color(200, 200, 255), '.');
 	
 	public Level(int width, int height) {
 		this.width = width;
@@ -26,7 +30,9 @@ public class Level {
 			map.add(TILE_AIR);
 		}
 		
-		generate();
+		//generate();
+		generateFromFile("Map1.txt");
+		//printMapToConsole();
 	}
 	
 	public void setTile(int x, int y, Tile t) {
@@ -102,6 +108,44 @@ public class Level {
 			for (int x = sx; x <= ex; ++x) {
 				map.get(x + y * width).draw(g, c, x, y);
 			}
+		}
+	}
+	
+	public void generateFromFile(String path) {
+		try {
+			FileInputStream inputStream = new FileInputStream(path);
+	        Scanner in = new Scanner(inputStream);
+
+	        //Loop through the width and height
+	        for (int y = 0; y < height; ++y) {
+	            String line = in.nextLine();
+	            for (int x = 0; x < width; ++x) {
+	                char t = line.charAt(x);
+	                switch (t) {
+	                    case '#': //Wall tile
+	                        setTile(x, y, Level.TILE_WALL);
+	                        break;
+	                    case '.': //Floor tile
+	                    	setTile(x, y, Level.TILE_AIR);
+	                        break;
+	                    default: //Everything else
+	                        System.out.println("ERROR: Tile not recognised (" + t + ")");
+	                        break;
+	                }
+	            }
+	        }
+	        in.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return;
+		}
+	}
+	
+	public void printMapToConsole() {
+		for (int i = 0; i < width * height; ++i) {
+			System.out.print(map.get(i).getChar());
+			if ((i + 1) % width == 0)
+				System.out.println();
 		}
 	}
 }

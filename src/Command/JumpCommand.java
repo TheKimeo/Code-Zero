@@ -11,7 +11,7 @@ private Entity e;
 	
 	public void execute() {
 		if (e.onFloor) {
-			e.jumpTime = 31;
+			e.jumpTime = 1; //31
 		}
 	}
 	

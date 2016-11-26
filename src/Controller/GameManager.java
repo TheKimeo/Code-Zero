@@ -53,7 +53,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		
 		camera = new Camera(WIDTH, HEIGHT);
 		
-		level = new Level(300, 80);
+		level = new Level(80, 40);
 		
 		InputComponent input = new KeyboardInput(); //new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
@@ -85,6 +85,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		long START_TICKS = FPSLimiter.getTicks();
 		
 		player.reset();
+		int count = 0;
 		while (true) {
 			fpsLimiter.begin();
 
@@ -98,10 +99,12 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 			}
 
 			draw();
-
+			
+			count++;
 			fpsLimiter.end();
 			if (fpsLimiter.isTick()) {
-				
+				System.out.println("FPS: " + count);
+				count = 0;
 			}
 		}
 	}
@@ -120,8 +123,8 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	
 	//HANDLE DRAWING ALL OBJECTS
 	private void draw() {
-		g.setColor(Color.BLACK);
-		g.fillRect(0,  0, WIDTH, HEIGHT2);
+		//g.setColor(Color.BLACK);
+		//g.fillRect(0,  0, WIDTH, HEIGHT2);
 		level.draw(g, camera);
 		player.getGraphics().update(player, g, camera);
 		
