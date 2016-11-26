@@ -6,7 +6,7 @@ import Entity.Entity;
 import Level.Level;
 
 public class KeyboardInput implements InputComponent {
-	public void update(InputController input, Entity player, Level level) {
+	public void update(int frame, InputController input, Entity player, Level level) {
 		
 	}
 
