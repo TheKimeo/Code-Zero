@@ -14,15 +14,16 @@ import Component.AIInput;
 import Component.EntityGraphics;
 import Component.GraphicsComponent;
 import Component.InputComponent;
+import Component.KeyboardInput;
 import Component.LevelPhysics;
 import Component.PhysicsComponent;
 import Entity.Entity;
 import Level.Level;
+import Utils.FPSLimiter;
 
 @SuppressWarnings("serial")
 public class GameManager extends JPanel implements Runnable, KeyListener {
 
-	private static long GAME_START_TIME = System.currentTimeMillis();
 	
 	// dimensions
 	// HEIGHT is the playing area size
@@ -53,7 +54,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		
 		level = new Level(15, 15);
 		
-		InputComponent input = new AIInput();
+		InputComponent input = new KeyboardInput(); //new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
 		GraphicsComponent graphics = new EntityGraphics();
 		player = new Entity(input, physics, graphics);
@@ -70,49 +71,44 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	}
 	
 	public void run() {
+		
+		FPSLimiter fpsLimiter = new FPSLimiter(60.0);
+		
 		//STUFF
 		running = true;
 		image = new BufferedImage(WIDTH, HEIGHT2, 1);
 		g = (Graphics2D) image.getGraphics();
 		
-		//Constants for semi-fixed timestep
 		int UPDATES_PER_SECOND = 125;
 		int CURRENT_FRAME = 0;
-		long START_TICKS = getTicks();
+		long START_TICKS = FPSLimiter.getTicks();
 		
 		player.reset();
-		
-		//Run until the state switches or program is exited
 		while (true) {
-			//Start frame timer
-			//m_fpsLimiter.beginFrame();
+			fpsLimiter.begin();
 
-			//Update loop
-			int REALTIME_FRAME = (int) Math.floor((getTicks() - START_TICKS) * (UPDATES_PER_SECOND / 1000.0f));
+			int REALTIME_FRAME = (int) Math.floor((FPSLimiter.getTicks() - START_TICKS) * (UPDATES_PER_SECOND / 1000.0f));
 			for (int i = 0, n = REALTIME_FRAME - CURRENT_FRAME; i < n; ++i) {
-				//Handle input for state
 				handleInput(CURRENT_FRAME);
 				
-				//Update physics for state
 				update(CURRENT_FRAME);
 
-				//Increase current frame
 				++CURRENT_FRAME;
 			}
 
-			//Draw state
 			draw();
 
-			//Limit & calculate fps then draw fps
-			//float fps = m_fpsLimiter.endFrame();
-			//if (m_fpsLimiter.isTick())
-			//	m_fps = (int) floor(fps);
+			fpsLimiter.end();
+			if (fpsLimiter.isTick()) {
+				
+			}
 		}
 	}
 	
 	//HANDLE INPUT TO APPLICATION
 	private void handleInput(int frame) {
-		//player.getInput().update(frame, player, level);
+		player.getInput().update(frame, player, level);
+		InputController.getInstance().update();
 	}
 	
 	//HANDLE UPDATING ALL OBJECTS
@@ -130,9 +126,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		g2.dispose();
 	}
 	
-	public static long getTicks() {
-		return System.currentTimeMillis() - GAME_START_TIME;
-	}
+	
 	
 	
 	
@@ -140,7 +134,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	public void keyTyped(KeyEvent e) {}
 
 	public int getInputKey(char c) {
-		switch (c) {
+		switch (Character.toString(c).toLowerCase().charAt(0)) {
 			case 'w':
 				return InputController.K1;
 			case 'a':

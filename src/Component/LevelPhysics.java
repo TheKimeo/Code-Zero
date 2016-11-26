@@ -29,7 +29,7 @@ public class LevelPhysics implements PhysicsComponent {
 
 		if (e.jumpTime > 0) {
 			e.jumpTime--;
-			e.dy = 2.4;
+			e.dy = -2.4;
 		}
 
 		if (inside.size() > 0) {
@@ -54,7 +54,6 @@ public class LevelPhysics implements PhysicsComponent {
 		
 		
 		e.dy += gravity;
-		//e.dy += gravity;
 		
 		if (Math.abs(e.dx) <= friction)
 			e.dx = 0.0f;

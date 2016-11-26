@@ -11,8 +11,12 @@ public class KeyboardInput implements InputComponent {
 		InputController input = InputController.getInstance();
 		
 		if (input.isDown(InputController.K1)) {
-			cs.addCommand(frame, CommandStream.UP);
+			cs.addCommand(frame, CommandStream.JUMP);
 		}
+		
+		if (input.isReleased(InputController.K1)) {
+			cs.addCommand(frame,  CommandStream.STOP_JUMP);
+		}	
 		if (input.isDown(InputController.K2)) {
 			cs.addCommand(frame, CommandStream.LEFT);
 		}

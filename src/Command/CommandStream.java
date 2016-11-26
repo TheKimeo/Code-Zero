@@ -3,18 +3,26 @@ package Command;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import Entity.Entity;
 import Utils.Pair;
 
 public class CommandStream {
 
-	public static int UP = 0x1;
-	public static int DOWN = 0x2;
-	public static int LEFT = 0x4;
-	public static int RIGHT = 0x8;
-	public static int SPECIAL = 0x10;
+	public static int JUMP = 0x1;
+	public static int STOP_JUMP = 0x2;
+	public static int DOWN = 0x4;
+	public static int LEFT = 0x8;
+	public static int RIGHT = 0x10;
+	public static int SPECIAL = 0x11;
 	
 	private ArrayList<Pair<Integer, Integer>> commandList = new ArrayList<>();
 	private boolean isSorted = true;
+	
+	private Entity e;
+	
+	public CommandStream(Entity e) {
+		this.e = e;
+	}
 	
 	public void addCommand(int frame, int moveCommand) {
 		int index = getIndex(frame);
@@ -59,17 +67,20 @@ public class CommandStream {
 	
 	public ArrayList<Command> bitwiseReverse(int i) {
 		ArrayList<Command> ret = new ArrayList<>();
-		if ((i & UP) == UP) {
-			//ret.add(new JumpCommand());
+		if ((i & JUMP) == JUMP) {
+			ret.add(new JumpCommand(e));
+		}
+		if ((i & STOP_JUMP) == STOP_JUMP) {
+			ret.add(new StopJumpCommand(e));
 		}
 		if ((i & DOWN) == DOWN) {
 		//	ret.add(new JumpCommand());
 		}
 		if ((i & LEFT) == LEFT) {
-			//ret.add(new LeftCommand());
+			ret.add(new LeftCommand(e));
 		}
 		if ((i & RIGHT) == RIGHT) {
-			//ret.add(new RightCommand());
+			ret.add(new RightCommand(e));
 		}
 		if ((i & SPECIAL) == SPECIAL) {
 			//ret.add(new SpecialCommand());

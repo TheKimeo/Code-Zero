@@ -14,7 +14,7 @@ public class Entity {
 	private PhysicsComponent physics;
 	private GraphicsComponent graphics;
 	
-	private CommandStream commandStream = new CommandStream();
+	private CommandStream commandStream = new CommandStream(this);
 	
 	//PHYSICS STATE
 	public final static int width = 32;

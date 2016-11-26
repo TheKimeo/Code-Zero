@@ -45,7 +45,7 @@ public class Level {
 	private void generate() {
 		for (int y = 0; y < height; ++y) {
 			for (int x = 0; x < width; ++x) {
-				if (y >= height - 1) {
+				if (y == height - 1) {
 					setTile(x, y, TILE_WALL);
 				} else {
 					setTile(x, y, TILE_AIR);
@@ -60,7 +60,7 @@ public class Level {
 		int xPosStart = (int) e.x / Tile.TILE_SIZE;
 		int xPosEnd = (int) (e.x + e.boundingBox.width - 1) / Tile.TILE_SIZE;
 		int yPos = (int) (e.y + e.boundingBox.height) / Tile.TILE_SIZE;
-		for (int x = xPosStart; x < xPosEnd; ++x) {
+		for (int x = xPosStart; x <= xPosEnd; ++x) {
 			Tile t = getTile(x, yPos);
 			if (t != null) {
 				ret.add(new TileStorage(t, x, yPos));

@@ -10,7 +10,7 @@ public class AIInput implements InputComponent {
 		CommandStream cs = e.getCommandStream();
 		
 		
-		cs.addCommand(frame, CommandStream.UP);
+		cs.addCommand(frame, CommandStream.RIGHT);
 	}
 
 	public void reset() {
