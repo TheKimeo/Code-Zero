@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -50,7 +51,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		
 		
 		
-		level = new Level(12, 9);
+		level = new Level(15, 15);
 		
 		InputComponent input = new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
@@ -79,6 +80,8 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		int CURRENT_FRAME = 0;
 		long START_TICKS = getTicks();
 		
+		player.reset();
+		
 		//Run until the state switches or program is exited
 		while (true) {
 			//Start frame timer
@@ -87,16 +90,9 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 			//Update loop
 			int REALTIME_FRAME = (int) Math.floor((getTicks() - START_TICKS) * (UPDATES_PER_SECOND / 1000.0f));
 			for (int i = 0, n = REALTIME_FRAME - CURRENT_FRAME; i < n; ++i) {
-				//Process Input to window
-				//switch (m_input.update()) {
-				//	case 1: //'Big red x' close button pressed
-				//		exitProgram = true;
-				//		break;
-				//}
-
 				//Handle input for state
 				handleInput(CURRENT_FRAME);
-
+				
 				//Update physics for state
 				update(CURRENT_FRAME);
 
@@ -121,16 +117,16 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	
 	//HANDLE UPDATING ALL OBJECTS
 	private void update(int frame) {
-		//player.getPhysics().update();
+		player.getPhysics().update(frame, player, level);
 	}
 	
 	//HANDLE DRAWING ALL OBJECTS
 	private void draw() {
 		level.draw(g);
 		player.getGraphics().update(player, g);
-
-		//Draw to screen
+		
 		Graphics g2 = getGraphics();
+		
 		g2.drawImage(image, 0, 0, WIDTH, HEIGHT2, null);
 		g2.dispose();
 	}

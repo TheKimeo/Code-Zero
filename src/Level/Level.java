@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import java.awt.Color;
+
 import Entity.Entity;
 import javafx.util.Pair;
 
@@ -14,8 +16,8 @@ public class Level {
 	
 	private ArrayList<Tile> map;
 	
-	private static Tile TILE_WALL = new Tile(true, true);
-	private static Tile TILE_AIR = new Tile(false, false);
+	private static Tile TILE_WALL = new Tile(true, true, 0.1152, 0.1152, new Color(100, 200, 100));
+	private static Tile TILE_AIR = new Tile(false, false, 0.1152, 0.03456, new Color(200, 200, 255));
 	
 	public Level(int width, int height) {
 		this.width = width;
@@ -34,6 +36,10 @@ public class Level {
 	}
 	
 	public Tile getTile(int x, int y) {
+		if (x < 0 || x >= width || y < 0 || y >= height) {
+			//System.out.println("ERROR READING TILE: " + x + ", " + y);
+			return null;
+		}
 		return map.get(x + y * width);
 	}
 	
@@ -49,8 +55,24 @@ public class Level {
 		}
 	}
 	
-	public ArrayList<Tile> getTilesWithin(Entity e) {
-		ArrayList<Tile> ret = new ArrayList<>();
+	public ArrayList<TileStorage> getTilesBelow(Entity e) {
+		ArrayList<TileStorage> ret = new ArrayList<>();
+		
+		int xPosStart = (e.boundingBox.x) / Tile.TILE_SIZE;
+		int xPosEnd = (e.boundingBox.x + e.boundingBox.width - 1) / Tile.TILE_SIZE;
+		int yPos = (e.boundingBox.y + e.boundingBox.height) / Tile.TILE_SIZE;
+		for (int x = xPosStart; x < xPosEnd; ++x) {
+			Tile t = getTile(x, yPos);
+			if (t != null) {
+				ret.add(new TileStorage(t, x, yPos));
+			}
+		}
+		
+		return ret;
+	}
+	
+	public ArrayList<TileStorage> getTilesWithin(Entity e) {
+		ArrayList<TileStorage> ret = new ArrayList<>();
 		
 		Rectangle bb = e.getBoundingBox();
 		int startx = bb.x / Tile.TILE_SIZE;
@@ -60,7 +82,10 @@ public class Level {
 		
 		for (int y = starty; y < endy; ++y) {
 			for (int x = startx; x < endx; ++x) {
-				ret.add(getTile(x, y));
+				Tile t = getTile(x, y);
+				if (t != null) {
+					ret.add(new TileStorage(t, x, y));
+				}
 			}
 		}
 		return ret;

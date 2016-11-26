@@ -13,7 +13,7 @@ public class CommandStream {
 	public static int RIGHT = 0x8;
 	public static int SPECIAL = 0x10;
 	
-	private ArrayList<Pair<Integer, Integer>> commandList;
+	private ArrayList<Pair<Integer, Integer>> commandList = new ArrayList<>();
 	private boolean isSorted = true;
 	
 	public void addCommand(int frame, int moveCommand) {

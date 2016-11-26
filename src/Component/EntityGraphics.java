@@ -37,8 +37,9 @@ public class EntityGraphics implements GraphicsComponent {
 		}
 		
 		int xmap = 0, ymap = 0;
+		
 		g.setColor(new Color(0x00FF00));
-		g.fillRect(e.renderBox.x, e.renderBox.y, e.renderBox.width, e.renderBox.height);
+		g.fillRect(e.boundingBox.x, e.boundingBox.y, e.boundingBox.width, e.boundingBox.height);
 		/*g.drawImage(
 				getImage(e),
 				e.boundingBox.x + xmap - e.boundingBox.width / 2,
