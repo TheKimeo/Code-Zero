@@ -1,4 +1,4 @@
-package Component;
+package Entity.Component;
 
 import Entity.Entity;
 import Level.Level;

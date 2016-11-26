@@ -1,7 +1,6 @@
-package Component;
+package Entity.Component;
 
-import Command.CommandStream;
-import Controller.InputController;
+import Entity.Command.CommandStream;
 import Entity.Entity;
 import Level.Level;
 

@@ -1,4 +1,4 @@
-package Command;
+package Entity.Command;
 
 public interface Command {
 	public void execute();

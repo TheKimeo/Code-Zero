@@ -1,4 +1,4 @@
-package Command;
+package Entity.Command;
 
 import Entity.Entity;
 
