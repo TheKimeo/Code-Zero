@@ -6,8 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		JFrame window = new JFrame("Diamond Hunter");
-		window.add(new GamePanel());
+		JFrame window = new JFrame("Code-Zero");
+		window.add(new GameManager());
 		
 		window.setResizable(false);
 		window.pack();

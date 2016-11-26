@@ -2,6 +2,7 @@ package Controller;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
@@ -115,7 +116,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	
 	//HANDLE INPUT TO APPLICATION
 	private void handleInput(int frame) {
-		player.getInput().update(input, player, level);
+		player.getInput().update(frame, player, level);
 	}
 	
 	//HANDLE UPDATING ALL OBJECTS
@@ -130,5 +131,49 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	
 	public static long getTicks() {
 		return System.currentTimeMillis() - GAME_START_TIME;
+	}
+
+	
+	
+	
+	
+	@Override
+	public void keyTyped(KeyEvent e) {}
+
+	public int getInputKey(char c) {
+		switch (c) {
+			case 'w':
+				return InputController.K1;
+			case 'a':
+				return InputController.K2;
+			case 's':
+				return InputController.K3;
+			case 'd':
+				return InputController.K4;
+			case 'e':
+				return InputController.K5;
+			default:
+				return -1;
+		}
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int key = getInputKey(e.getKeyChar());
+		if (key == -1) {
+			return;
+		} else {
+			InputController.getInstance().pressKey(key);
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		int key = getInputKey(e.getKeyChar());
+		if (key == -1) {
+			return;
+		} else {
+			InputController.getInstance().releaseKey(key);
+		}
 	}
 }

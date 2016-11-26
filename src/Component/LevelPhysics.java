@@ -2,11 +2,11 @@ package Component;
 
 public class LevelPhysics implements PhysicsComponent {
 
-	public update() {
+	public void update() {
 		
 	}
 	
-	public reset() {
+	public void reset() {
 		
 	}
 }

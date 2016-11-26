@@ -5,6 +5,6 @@ import Entity.Entity;
 import Level.Level;
 
 public interface InputComponent {
-	public void update(int frame, InputController input, Entity player, Level level);
+	public void update(int frame, Entity player, Level level);
 	public void reset();
 }
