@@ -15,9 +15,5 @@ public class Main {
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		GameManager gm = new GameManager();
-		gm.run();
 	}
-
 }

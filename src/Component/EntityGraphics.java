@@ -1,5 +1,6 @@
 package Component;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
@@ -8,47 +9,50 @@ import Entity.Entity;
 public class EntityGraphics implements GraphicsComponent {
 	
 	public void setFrames(Entity e, BufferedImage[] frames) {
-		frames = frames;
-		currentFrame = 0;
-		count = 0;
-		timesPlayed = 0;
-		delay = 2;
-		numFrames = frames.length;
+		e.frames = frames;
+		e.currentFrame = 0;
+		e.count = 0;
+		e.timesPlayed = 0;
+		e.delay = 2;
+		e.numFrames = frames.length;
 	}
 	
-	public void setDelay(int i) { delay = i; }
-	public void setFrame(int i) { currentFrame = i; }
-	public void setNumFrames(int i) { numFrames = i; }
+	public void setDelay(Entity e, int i) { e.delay = i; }
+	public void setFrame(Entity e, int i) { e.currentFrame = i; }
+	public void setNumFrames(Entity e, int i) { e.numFrames = i; }
 	
 	public void update(Entity e, Graphics2D g) {
 		
-		if(delay == -1) return;
+		if(e.delay == -1) return;
 		
-		count++;
+		e.count++;
 		
-		if(count == delay) {
-			currentFrame++;
-			count = 0;
+		if(e.count == e.delay) {
+			e.currentFrame++;
+			e.count = 0;
 		}
-		if(currentFrame == numFrames) {
-			currentFrame = 0;
-			timesPlayed++;
+		if(e.currentFrame == e.numFrames) {
+			e.currentFrame = 0;
+			e.timesPlayed++;
 		}
 		
-		g.drawImage(
-				getImage(),
-				x + xmap - width / 2,
-				y + ymap - height / 2,
+		int xmap = 0, ymap = 0;
+		g.setColor(new Color(0x00FF00));
+		g.fillRect(e.renderBox.x, e.renderBox.y, e.renderBox.width, e.renderBox.height);
+		/*g.drawImage(
+				getImage(e),
+				e.boundingBox.x + xmap - e.boundingBox.width / 2,
+				e.boundingBox.y + ymap - e.boundingBox.height / 2,
 				null
-			);
+			); */
 		
 	}
 	
-	public int getFrame() { return currentFrame; }
-	public int getCount() { return count; }
-	public BufferedImage getImage() { return frames[currentFrame]; }
-	public boolean hasPlayedOnce() { return timesPlayed > 0; }
-	public boolean hasPlayed(int i) { return timesPlayed == i; }
+	public int getFrame(Entity e) { return e.currentFrame; }
+	public int getCount(Entity e) { return e.count; }
+	public BufferedImage getImage(Entity e) { return e.frames[e.currentFrame]; }
+	public boolean hasPlayedOnce(Entity e) { return e.timesPlayed > 0; }
+	public boolean hasPlayed(Entity e, int i) { return e.timesPlayed == i; }
 	
 	public void reset() {
 		

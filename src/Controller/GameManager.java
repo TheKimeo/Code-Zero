@@ -1,6 +1,7 @@
 package Controller;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -28,7 +29,6 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 600;
 	public static final int HEIGHT2 = HEIGHT + 16;
-	public static final int SCALE = 1;
 	
 	// game loop stuff
 	private Thread thread;
@@ -44,13 +44,13 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	private Entity player;
 	
 	public GameManager() {
-		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT2 * SCALE));
+		setPreferredSize(new Dimension(WIDTH, HEIGHT2));
 		setFocusable(true);
 		requestFocus();
 		
 		
 		
-		level = new Level(10, 10);
+		level = new Level(12, 9);
 		
 		InputComponent input = new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
@@ -116,24 +116,28 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	
 	//HANDLE INPUT TO APPLICATION
 	private void handleInput(int frame) {
-		player.getInput().update(frame, player, level);
+		//player.getInput().update(frame, player, level);
 	}
 	
 	//HANDLE UPDATING ALL OBJECTS
 	private void update(int frame) {
-		player.getPhysics().update();
+		//player.getPhysics().update();
 	}
 	
 	//HANDLE DRAWING ALL OBJECTS
 	private void draw() {
+		level.draw(g);
 		player.getGraphics().update(player, g);
+
+		//Draw to screen
+		Graphics g2 = getGraphics();
+		g2.drawImage(image, 0, 0, WIDTH, HEIGHT2, null);
+		g2.dispose();
 	}
 	
 	public static long getTicks() {
 		return System.currentTimeMillis() - GAME_START_TIME;
 	}
-
-	
 	
 	
 	

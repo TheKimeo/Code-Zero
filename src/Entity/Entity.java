@@ -16,20 +16,21 @@ public class Entity {
 	private CommandStream commandStream = new CommandStream();
 	
 	//PHYSICS STATE
-	private final static int width = 10;
-	private final static int height = 10;
+	public final static int width = 32;
+	public final static int height = 48;
 	
-	Rectangle boundingBox = new Rectangle(width, height);
+	public Rectangle boundingBox = new Rectangle(width, height);
+	public Rectangle renderBox = new Rectangle(width, height);
 	
 	//ANIMATION STATE (MAKE GETTERS AND SETTERS)
-	private BufferedImage[] frames;
-	private int currentFrame;
-	private int numFrames;
+	public BufferedImage[] frames;
+	public int currentFrame;
+	public int numFrames;
 	
-	private int count;
-	private int delay;
+	public int count;
+	public int delay;
 	
-	private int timesPlayed = 0;
+	public int timesPlayed = 0;
 	
 	
 	
