@@ -29,7 +29,7 @@ public class LevelPhysics implements PhysicsComponent {
 
 		if (e.jumpTime > 0) {
 			e.jumpTime--;
-			e.dy = -2.4;
+			e.dy = -4.8; //2.4
 		}
 
 		if (inside.size() > 0) {
@@ -94,12 +94,12 @@ public class LevelPhysics implements PhysicsComponent {
 			if (Math.abs(distx) > Math.abs(disty)) {
 				if (distx > 0.0) {
 					e.x += cdx;
-					if (e.dx > 0.0) {
+					if (e.dx < 0.0) {
 						e.dx = 0.0;
 					}
 				} else {
 					e.x -= cdx;
-					if (e.dx < 0.0) {
+					if (e.dx > 0.0) {
 						e.dx = 0.0;
 					}
 				}
