@@ -1,10 +1,94 @@
 package Command;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+
+import Utils.Pair;
+
 public class CommandStream {
 
-	public static enum Preset { UP, DOWN, LEFT, RIGHT }
+	public static int UP = 0x1;
+	public static int DOWN = 0x2;
+	public static int LEFT = 0x4;
+	public static int RIGHT = 0x8;
+	public static int SPECIAL = 0x10;
 	
-	public void addCommand(int frame, Preset moveCommand) {
+	private ArrayList<Pair<Integer, Integer>> commandList;
+	private boolean isSorted = true;
+	
+	public void addCommand(int frame, int moveCommand) {
+		int index = getIndex(frame);
+		if (index == -1) {
+			commandList.add(new Pair<Integer, Integer>(frame, moveCommand));
+			isSorted = false;
+		} else {
+			Pair<Integer, Integer> c = commandList.get(index);
+			c.setSecond(c.second() | moveCommand);
+		}
+	}
+	
+	public ArrayList<Command> getCommands(int frame) {
+		int index = getIndex(frame);
+		if (index == -1) {
+			return new ArrayList<>();
+		} else {
+			return bitwiseReverse(commandList.get(index).second());
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private int getIndex(int frame) {
+		//Sort list
+		sortList();
 		
+		//Binary Search
+		int current;
+		int average, min = 0, max = commandList.size() - 1;
+		while (min <= max) {
+			average = (int) Math.floor((min + max) / 2.0f);
+			current = commandList.get(average).first();
+			if (current == frame)
+				return average;
+			else if (current > frame)
+				max = average - 1;
+			else
+				min = average + 1;
+		}
+		return -1;
+	}
+	
+	public ArrayList<Command> bitwiseReverse(int i) {
+		ArrayList<Command> ret = new ArrayList<>();
+		if ((i & UP) == UP) {
+			//ret.add(new JumpCommand());
+		}
+		if ((i & DOWN) == DOWN) {
+		//	ret.add(new JumpCommand());
+		}
+		if ((i & LEFT) == LEFT) {
+			//ret.add(new LeftCommand());
+		}
+		if ((i & RIGHT) == RIGHT) {
+			//ret.add(new RightCommand());
+		}
+		if ((i & SPECIAL) == SPECIAL) {
+			//ret.add(new SpecialCommand());
+		}
+		return ret;
+	}
+	
+	public void sortList() {
+		if (isSorted) {
+			return;
+		}
+		
+		commandList.sort(new Comparator<Pair<Integer, Integer>>() {
+			@Override
+			public int compare(Pair<Integer, Integer> o1, Pair<Integer, Integer> o2) {
+				return o1.first() - o2.first();
+			}
+		});
+		
+		isSorted = true;
 	}
 }

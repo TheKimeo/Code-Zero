@@ -2,8 +2,6 @@ package Controller;
 
 import javax.swing.JFrame;
 
-import com.neet.DiamondHunter.Main.GamePanel;
-
 public class Main {
 
 	public static void main(String[] args) {
