@@ -46,7 +46,7 @@ public class Level {
 	private void generate() {
 		for (int y = 0; y < height; ++y) {
 			for (int x = 0; x < width; ++x) {
-				if (y == height - 1) {
+				if (y >= height - 2) {
 					setTile(x, y, TILE_WALL);
 				} else {
 					setTile(x, y, TILE_AIR);
@@ -58,9 +58,9 @@ public class Level {
 	public ArrayList<TileStorage> getTilesBelow(Entity e) {
 		ArrayList<TileStorage> ret = new ArrayList<>();
 		
-		int xPosStart = (e.boundingBox.x) / Tile.TILE_SIZE;
-		int xPosEnd = (e.boundingBox.x + e.boundingBox.width - 1) / Tile.TILE_SIZE;
-		int yPos = (e.boundingBox.y + e.boundingBox.height) / Tile.TILE_SIZE;
+		int xPosStart = (int) e.x / Tile.TILE_SIZE;
+		int xPosEnd = (int) (e.x + e.boundingBox.width - 1) / Tile.TILE_SIZE;
+		int yPos = (int) (e.y + e.boundingBox.height) / Tile.TILE_SIZE;
 		for (int x = xPosStart; x < xPosEnd; ++x) {
 			Tile t = getTile(x, yPos);
 			if (t != null) {
@@ -75,10 +75,10 @@ public class Level {
 		ArrayList<TileStorage> ret = new ArrayList<>();
 		
 		Rectangle bb = e.getBoundingBox();
-		int startx = bb.x / Tile.TILE_SIZE;
-		int starty = bb.y / Tile.TILE_SIZE;
-		int endx = startx + bb.width /Tile.TILE_SIZE;
-		int endy = starty + bb.height / Tile.TILE_SIZE;
+		int startx = (int) e.x / Tile.TILE_SIZE;
+		int starty = (int) e.y / Tile.TILE_SIZE;
+		int endx = (int) (e.x + bb.width) /Tile.TILE_SIZE;
+		int endy = (int) (e.y + bb.height) / Tile.TILE_SIZE;
 		
 		for (int y = starty; y < endy; ++y) {
 			for (int x = startx; x < endx; ++x) {

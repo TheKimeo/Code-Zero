@@ -40,6 +40,7 @@ public class EntityGraphics implements GraphicsComponent {
 		
 		g.setColor(new Color(0x00FF00));
 		g.fillRect(e.boundingBox.x, e.boundingBox.y, e.boundingBox.width, e.boundingBox.height);
+//		g.fillRect(10,10,15,15);
 		/*g.drawImage(
 				getImage(e),
 				e.boundingBox.x + xmap - e.boundingBox.width / 2,
