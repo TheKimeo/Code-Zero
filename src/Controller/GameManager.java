@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -68,7 +69,8 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
         BufferedImage playerImages[] = new BufferedImage[1];
 
         try {
-            image = ImageIO.read(new File());
+            playerImages[0] = ImageIO.read(new FileInputStream("test.png"));
+
         }catch (IOException e){
             System.out.println("image error loading!!");
         }
