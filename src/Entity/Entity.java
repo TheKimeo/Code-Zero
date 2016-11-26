@@ -2,11 +2,12 @@ package Entity;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import Entity.Command.CommandStream;
-import Entity.Component.GraphicsComponent;
-import Entity.Component.InputComponent;
-import Entity.Component.PhysicsComponent;
+import Command.CommandStream;
+import Component.GraphicsComponent;
+import Component.InputComponent;
+import Component.PhysicsComponent;
 import Level.Tile;
+import javafx.util.Pair;
 
 public class Entity {
 	private InputComponent input;

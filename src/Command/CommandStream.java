@@ -1,4 +1,4 @@
-package Entity.Command;
+package Command;
 
 import java.util.ArrayList;
 import java.util.Comparator;

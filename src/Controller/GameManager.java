@@ -10,12 +10,12 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import Entity.Component.EntityGraphics;
-import Entity.Component.GraphicsComponent;
-import Entity.Component.InputComponent;
-import Entity.Component.KeyboardInput;
-import Entity.Component.LevelPhysics;
-import Entity.Component.PhysicsComponent;
+import Component.EntityGraphics;
+import Component.GraphicsComponent;
+import Component.InputComponent;
+import Component.KeyboardInput;
+import Component.LevelPhysics;
+import Component.PhysicsComponent;
 import Entity.Entity;
 import Level.Level;
 import Utils.FPSLimiter;

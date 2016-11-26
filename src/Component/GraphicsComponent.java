@@ -1,4 +1,4 @@
-package Entity.Component;
+package Component;
 
 import java.awt.Graphics2D;
 

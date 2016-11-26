@@ -1,5 +1,6 @@
-package Entity.Component;
+package Component;
 
+import Controller.InputController;
 import Entity.Entity;
 import Level.Level;
 

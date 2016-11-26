@@ -1,13 +1,14 @@
-package Entity.Component;
+package Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import Entity.Command.Command;
+import Command.Command;
 import Entity.Entity;
 import Level.Level;
 import Level.Tile;
 import Level.TileStorage;
+import Utils.Pair;
 
 public class LevelPhysics implements PhysicsComponent {
 
