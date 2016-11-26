@@ -124,7 +124,6 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	private void draw() {
 		level.draw(g);
 		player.getGraphics().update(player, g);
-		
 		Graphics g2 = getGraphics();
 		
 		g2.drawImage(image, 0, 0, WIDTH, HEIGHT2, null);

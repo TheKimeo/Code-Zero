@@ -54,13 +54,13 @@ public class LevelPhysics implements PhysicsComponent {
 		
 		
 		e.dy += gravity;
-		//System.out.printf("%f", gravity);
+		//e.dy += gravity;
+		
 		if (Math.abs(e.dx) <= friction)
 			e.dx = 0.0f;
 		else
 			e.dx += (e.dx > 0.0f ? -friction : friction);
 
-		//System.out.println("UPDATING POSITION: x: " + e.dx + ", y:" + e.dy);
 		e.dx = clamp(e.dx, -e.maxdx, e.maxdx);
 		e.dy = clamp(e.dy, -e.maxdy, e.maxdy);
 
@@ -68,9 +68,7 @@ public class LevelPhysics implements PhysicsComponent {
 		e.x += e.dx;
 		e.y += e.dy;
 
-		if (collideWithMap(e, level)) {
-			System.out.println("COLLISION DETECTED");
-		}
+		collideWithMap(e, level);
 		
 		e.boundingBox.x = (int) e.x;
 		e.boundingBox.y = (int) e.y;
@@ -93,40 +91,26 @@ public class LevelPhysics implements PhysicsComponent {
 		double cdx = crx - Math.abs(distx);
 		double cdy = cry - Math.abs(disty);
 
-		System.out.println("crx: "+crx);
-		System.out.println("cry: "+cry);
-		System.out.println("cx: "+cx);
-		System.out.println("cy: "+cy);
-        System.out.println("centerx: "+tileCenterX);
-        System.out.println("centery: "+tileCenterY);
-		System.out.println("distx: "+distx);
-		System.out.println("disty: "+disty);
-		System.out.println("cdx: "+cdx);
-		System.out.println("cdy: "+cdy);
-
 		if (cdx > 0.0 && cdy > 0.0) {
-			System.out.println("COLLIDE");
-			if (cdx < cdy) {
+			if (Math.abs(distx) > Math.abs(disty)) {
 				if (distx > 0.0) {
-					//e.x += cdx;
+					e.x += cdx;
 					if (e.dx > 0.0) {
 						e.dx = 0.0;
 					}
 				} else {
-					//e.x -= cdx;
+					e.x -= cdx;
 					if (e.dx < 0.0) {
 						e.dx = 0.0;
 					}
 				}
 			} else {
-				if (disty > 0.0) {
-					e.y -= cdy*2;
+				if (disty < 0.0) {
+					e.y -= cdy;
 					if (e.dy > 0.0) {
 						e.dy = 0.0;
                         e.onFloor = true;
                     }
-                    System.out.println(e.y);
-
                 } else {
 					e.y += cdy;
 					if (e.dy < 0.0) {
@@ -135,11 +119,6 @@ public class LevelPhysics implements PhysicsComponent {
 					}
 				}
 			}
-//            try {
-//                wait(100000);
-//            } catch (InterruptedException e1) {
-//                e1.printStackTrace();
-//            }
             return true;
 		}
 		return false;

@@ -37,7 +37,6 @@ public class Level {
 	
 	public Tile getTile(int x, int y) {
 		if (x < 0 || x >= width || y < 0 || y >= height) {
-			//System.out.println("ERROR READING TILE: " + x + ", " + y);
 			return null;
 		}
 		return map.get(x + y * width);
@@ -46,7 +45,7 @@ public class Level {
 	private void generate() {
 		for (int y = 0; y < height; ++y) {
 			for (int x = 0; x < width; ++x) {
-				if (y >= height - 2) {
+				if (y >= height - 1) {
 					setTile(x, y, TILE_WALL);
 				} else {
 					setTile(x, y, TILE_AIR);
@@ -74,14 +73,13 @@ public class Level {
 	public ArrayList<TileStorage> getTilesWithin(Entity e) {
 		ArrayList<TileStorage> ret = new ArrayList<>();
 		
-		Rectangle bb = e.getBoundingBox();
 		int startx = (int) e.x / Tile.TILE_SIZE;
 		int starty = (int) e.y / Tile.TILE_SIZE;
-		int endx = (int) (e.x + bb.width) /Tile.TILE_SIZE;
-		int endy = (int) (e.y + bb.height) / Tile.TILE_SIZE;
+		int endx = (int) (e.x + e.width - 1) / Tile.TILE_SIZE;
+		int endy = (int) (e.y + e.height - 1) / Tile.TILE_SIZE;
 		
-		for (int y = starty; y < endy; ++y) {
-			for (int x = startx; x < endx; ++x) {
+		for (int y = starty; y <= endy; ++y) {
+			for (int x = startx; x <= endx; ++x) {
 				Tile t = getTile(x, y);
 				if (t != null) {
 					ret.add(new TileStorage(t, x, y));
