@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import Component.AIInput;
 import Component.EntityGraphics;
 import Component.GraphicsComponent;
 import Component.InputComponent;
@@ -41,6 +40,8 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	private BufferedImage image;
 	private Graphics2D g;
 	
+	private Camera camera;
+	
 	private Level level;
 	
 	private Entity player;
@@ -50,9 +51,9 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		setFocusable(true);
 		requestFocus();
 		
+		camera = new Camera(WIDTH, HEIGHT);
 		
-		
-		level = new Level(15, 15);
+		level = new Level(300, 80);
 		
 		InputComponent input = new KeyboardInput(); //new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
@@ -114,14 +115,17 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	//HANDLE UPDATING ALL OBJECTS
 	private void update(int frame) {
 		player.getPhysics().update(frame, player, level);
+		camera.setPosition(player.x + player.width / 2.0, player.y + player.height / 2.0);
 	}
 	
 	//HANDLE DRAWING ALL OBJECTS
 	private void draw() {
-		level.draw(g);
-		player.getGraphics().update(player, g);
-		Graphics g2 = getGraphics();
+		g.setColor(Color.BLACK);
+		g.fillRect(0,  0, WIDTH, HEIGHT2);
+		level.draw(g, camera);
+		player.getGraphics().update(player, g, camera);
 		
+		Graphics g2 = getGraphics();
 		g2.drawImage(image, 0, 0, WIDTH, HEIGHT2, null);
 		g2.dispose();
 	}

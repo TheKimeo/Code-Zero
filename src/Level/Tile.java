@@ -2,7 +2,8 @@ package Level;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
+
+import Controller.Camera;
 
 public class Tile {
 	
@@ -13,21 +14,21 @@ public class Tile {
 	public double friction;
 	
 	private boolean visible;
-	private Color c;
+	private Color color;
 	
-	public Tile(boolean col, boolean vis, double gravity, double friction, Color c) {
+	public Tile(boolean col, boolean vis, double gravity, double friction, Color color) {
 		collidable = col;
 		visible = vis;
 		this.gravity = gravity;
 		this.friction = friction;
-		this.c = c;
+		this.color = color;
 	}
 	
-	public void draw(Graphics2D g, int x, int y) {
+	public void draw(Graphics2D g, Camera c, int x, int y) {
 		//DRAW TILE
 		//if (visible) {
-			g.setColor(c);
-			g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+			g.setColor(color);
+			g.fillRect(x * TILE_SIZE - (int) c.x, y * TILE_SIZE - (int) c.y, TILE_SIZE, TILE_SIZE);
 		//}
 	}
 }

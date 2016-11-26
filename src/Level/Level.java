@@ -1,13 +1,11 @@
 package Level;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 
-import java.awt.Color;
-
+import Controller.Camera;
 import Entity.Entity;
-import javafx.util.Pair;
 
 public class Level {
 
@@ -45,7 +43,7 @@ public class Level {
 	private void generate() {
 		for (int y = 0; y < height; ++y) {
 			for (int x = 0; x < width; ++x) {
-				if (y == height - 1) {
+				if (y > height / 2.0) {
 					setTile(x, y, TILE_WALL);
 				} else {
 					setTile(x, y, TILE_AIR);
@@ -89,9 +87,40 @@ public class Level {
 		return ret;
 	}
 	
-	public void draw(Graphics2D g) {
-		for (int i = 0; i < map.size(); ++i) {
-			map.get(i).draw(g, i % width, i / width);
+	public void draw(Graphics2D g, Camera c) {
+		int sx = (int) c.x / Tile.TILE_SIZE;
+		int ex = (int) (c.x + c.width) / Tile.TILE_SIZE;
+		int sy = (int) c.y / Tile.TILE_SIZE;
+		int ey = (int) (c.y + c.height) / Tile.TILE_SIZE + 1;
+		
+		if (sx < 0) sx = 0;
+		if (sy < 0) sy = 0;
+		if (ex > width - 1) ex = width - 1;
+		if (ey > height - 1) ey = height - 1;
+		
+		for (int y = sy; y <= ey; ++y) {
+			for (int x = sx; x <= ex; ++x) {
+				map.get(x + y * width).draw(g, c, x, y);
+			}
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

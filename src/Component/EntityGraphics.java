@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import Controller.Camera;
 import Entity.Entity;
 
 public class EntityGraphics implements GraphicsComponent {
@@ -21,7 +22,7 @@ public class EntityGraphics implements GraphicsComponent {
 	public void setFrame(Entity e, int i) { e.currentFrame = i; }
 	public void setNumFrames(Entity e, int i) { e.numFrames = i; }
 	
-	public void update(Entity e, Graphics2D g) {
+	public void update(Entity e, Graphics2D g, Camera c) {
 		
 		if(e.delay == -1) return;
 		
@@ -36,10 +37,8 @@ public class EntityGraphics implements GraphicsComponent {
 			e.timesPlayed++;
 		}
 		
-		int xmap = 0, ymap = 0;
-		
 		g.setColor(new Color(0x00FF00));
-		g.fillRect(e.boundingBox.x, e.boundingBox.y, e.boundingBox.width, e.boundingBox.height);
+		g.fillRect(e.boundingBox.x - (int) c.x, e.boundingBox.y - (int) c.y, e.boundingBox.width, e.boundingBox.height);
 //		g.fillRect(10,10,15,15);
 		/*g.drawImage(
 				getImage(e),
