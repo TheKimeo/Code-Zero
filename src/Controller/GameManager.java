@@ -7,7 +7,10 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Component.EntityGraphics;
@@ -54,11 +57,26 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		camera = new Camera(WIDTH, HEIGHT);
 		
 		level = new Level(300, 80);
-		
+
+
+		//Player input and graphics components
 		InputComponent input = new KeyboardInput(); //new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
 		GraphicsComponent graphics = new EntityGraphics();
 		player = new Entity(input, physics, graphics);
+        EntityGraphics playerGraphics = (EntityGraphics)player.getGraphics();
+
+        BufferedImage playerImages[] = new BufferedImage[1];
+
+        try {
+            image = ImageIO.read(new File());
+        }catch (IOException e){
+            System.out.println("image error loading!!");
+        }
+
+        playerGraphics.setFrames(player, playerImages);
+
+
 	}
 	
 	// ready to display
