@@ -65,12 +65,18 @@ public class Entity {
     private static String[] leftWarp = new String[]{"TimeWarpAnimations/Subaru_LeftTime1.png", "TimeWarpAnimations/Subaru_LeftTime2.png", "TimeWarpAnimations/Subaru_LeftTime3.png", "TimeWarpAnimations/Subaru_LeftTime4.png", "TimeWarpAnimations/Subaru_LeftTime5.png", "TimeWarpAnimations/Subaru_LeftTime4.png", "TimeWarpAnimations/Subaru_LeftTime3.png", "TimeWarpAnimations/Subaru_LeftTime2.png", "TimeWarpAnimations/Subaru_LeftTime1.png",};
     private static String[] rightWarp = new String[]{"TimeWarpAnimations/Subaru_RightTime1.png", "TimeWarpAnimations/Subaru_RightTime2.png", "TimeWarpAnimations/Subaru_RightTime3.png", "TimeWarpAnimations/Subaru_RightTime4.png", "TimeWarpAnimations/Subaru_RightTime5.png", "TimeWarpAnimations/Subaru_RightTime4.png", "TimeWarpAnimations/Subaru_RightTime3.png", "TimeWarpAnimations/Subaru_RightTime2.png", "TimeWarpAnimations/Subaru_RightTime1.png",};
 
+    //Jumping
+    private static String[] rightJumpStartPaths = new String[]{"JumpAnimations/Subaru_RightJump1.png","JumpAnimations/Subaru_RightJump2.png","JumpAnimations/Subaru_RightJump3.png","JumpAnimations/Subaru_RightJump4.png"};
+
     //right left idle
 	public static BufferedImage[] leftIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftIdlePaths)));
 	public static BufferedImage[] rightIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightIdlePaths)));
     //right left moving
     public static BufferedImage[] leftWalkFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftWalkPaths)));
 	public static BufferedImage[] rightWalkFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightWalkPaths)));
+    //right jumps aka. finisher
+    public BufferedImage[] rightJumpStartFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightJumpStartPaths)));
+
     //left right death
     public static BufferedImage[] leftDeathFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftDeath)));
     public static BufferedImage[] rightDeathFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightDeath)));
