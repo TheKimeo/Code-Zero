@@ -31,7 +31,6 @@ public class LevelPhysics implements PhysicsComponent {
 		
 		if (e.warping) {
 			if (e.currentFrame == 4) {
-				
 				e.x = e.destx;
 				e.y = e.desty;
 				e.dx = 0.0;
@@ -98,10 +97,12 @@ public class LevelPhysics implements PhysicsComponent {
 
 		collideWithMap(e, level);
 		
-		if (frame <= e.positions.size()) {
-			e.positions.add(new Pair<Double, Double>(e.x, e.y));
-		} else {
-			e.positions.set(frame, new Pair<Double, Double>(e.x, e.y));
+		if (e.getInput().getClass() == KeyboardInput.class) {
+			if (frame <= e.positions.size()) {
+				e.positions.add(new Pair<Double, Double>(e.x, e.y));
+			} else {
+				e.positions.set(frame, new Pair<Double, Double>(e.x, e.y));
+			}
 		}
 	}
 	
