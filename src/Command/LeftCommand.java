@@ -13,8 +13,10 @@ public class LeftCommand implements Command {
 		e.dx -= 0.15;
 		if (e.onFloor && e.delay != 7)
 			e.delay = 7;
-		if (e.onFloor && e.frames != e.leftWalkFrames) {
+		if (e.frames != e.leftWalkFrames) {
 			e.getGraphics().setFrames(e, e.leftWalkFrames, 7);
+			if (!e.onFloor)
+				e.delay = 2;
 		}
 		e.isWalkingLeft = true;
 	}

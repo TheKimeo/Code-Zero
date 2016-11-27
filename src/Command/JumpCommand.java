@@ -11,7 +11,8 @@ private Entity e;
 	
 	public void execute() {
 		if (e.onFloor) {
-			e.delay = 2;
+			if (e.frames == e.leftWalkFrames || e.frames == e.rightWalkFrames)
+				e.delay = 2;
 			e.jumpTime = 1; //31
 		}
 	}
