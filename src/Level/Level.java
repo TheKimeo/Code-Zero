@@ -21,8 +21,8 @@ public class Level {
 	private static Tile TILE_WALL = new Tile(true, true, 0.1152, 0.4, new Color(150, 100, 0), '#', "Textures/Dirt.png"); // 0.1152
 	private static Tile TILE_AIR = new Tile(false, false, 0.1152, 0.03456, new Color(200, 200, 255), '.', "");
 	private static Tile TILE_STONE = new Tile(true, true, 0.1152, 0.4, new Color(100, 100, 100), '#', "Textures/Stone.png"); // 0.1152
-	private static Tile TILE_GRASS = new Tile(true, true, 0.1152, 0.03456, new Color(100, 255, 100), '.', "Textures/Grass.png");
-	private static Tile TILE_WOOD = new Tile(true, true, 0.1152, 0.03456, new Color(70, 30, 0), '.', "Textures/WoodV.png");
+	private static Tile TILE_GRASS = new Tile(true, true, 0.1152, 0.4, new Color(100, 255, 100), '.', "Textures/Grass.png");
+	private static Tile TILE_WOOD = new Tile(true, true, 0.1152, 0.4, new Color(70, 30, 0), '.', "Textures/WoodV.png");
 	
 	public Level(int width, int height) {
 		this.width = width;
