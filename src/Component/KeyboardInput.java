@@ -7,13 +7,14 @@ import Level.Level;
 
 public class KeyboardInput implements InputComponent {
 	public void update(int frame, Entity e, Level level) {
+		if (e.warping)
+			return;
 		CommandStream cs = e.getCommandStream();
 		InputController input = InputController.getInstance();
 		
 		if (input.isDown(InputController.K1)) {
 			cs.addCommand(frame, CommandStream.JUMP);
 		}
-		
 		if (input.isReleased(InputController.K1)) {
 			cs.addCommand(frame,  CommandStream.STOP_JUMP);
 		}	

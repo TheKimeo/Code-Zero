@@ -24,6 +24,12 @@ public class Level {
 	private static Tile TILE_GRASS = new Tile(true, true, 0.1152, 0.4, new Color(100, 255, 100), '.', "Textures/Grass.png");
 	private static Tile TILE_WOOD = new Tile(true, true, 0.1152, 0.4, new Color(70, 30, 0), '.', "Textures/WoodV.png");
 	
+	private static Tile TILE_DARK_STONE = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '(', "Textures/StoneDark.png");
+	private static Tile TILE_LEAVES = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '\'', "Textures/Leaves.png");
+	private static Tile TILE_DARK_GRASS = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '6', "Textures/GrassDark.png");
+	private static Tile TILE_DARK_TREE = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '\"', "Textures/WoodHDark.png");		
+	private static Tile TILE_DARK_DIRT = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '~', "Textures/DirtDark.png");
+	
 	public Level(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -140,6 +146,21 @@ public class Level {
 	                    case '3': //Floor tile
 	                    	setTile(x, y, Level.TILE_STONE);
 	                        break;
+	                    case '6':
+	                    	setTile(x, y, Level.TILE_DARK_GRASS);
+	                    	break;
+	                    case '\'':
+	                    	setTile(x, y, Level.TILE_LEAVES);
+	                    	break;
+	                    case '~':
+	                    	setTile(x, y, Level.TILE_DARK_DIRT);
+	                    	break;
+	                    case '\"':
+	                    	setTile(x, y, Level.TILE_DARK_TREE);
+	                    	break;
+	                    case '(':
+	                    	setTile(x, y, Level.TILE_DARK_STONE);
+	                    	break;
 	                    default: //Everything else
 	                        System.out.println("ERROR: Tile not recognised (" + t + ")");
 	                        setTile(x, y, Level.TILE_WALL);
