@@ -22,11 +22,11 @@ public class LevelPhysics implements PhysicsComponent {
 			c.execute();
 		}
 		
-		if (e.isWalkingLeft == false && e.frames == e.leftIdleFrames) {
-			e.getGraphics().setFrames(e, e.leftIdleFrames);
+		if (e.isWalkingLeft == false && e.frames == e.leftWalkFrames) {
+			e.getGraphics().setFrames(e, e.leftIdleFrames, 20);
 		}
-		if (e.isWalkingRight == false && e.frames == e.rightIdleFrames) {
-			e.getGraphics().setFrames(e, e.rightIdleFrames);
+		if (e.isWalkingRight == false && e.frames == e.rightWalkFrames) {
+			e.getGraphics().setFrames(e, e.rightIdleFrames, 20);
 		}
 		//if (e.isRewind) {
 		//	frame

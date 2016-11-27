@@ -50,7 +50,7 @@ public class EntityGraphics extends GraphicsComponent {
 	public boolean hasPlayed(Entity e, int i) { return e.timesPlayed == i; }
 	
 	public void reset(Entity e) {
-		e.getGraphics().setFrames(e, e.rightIdleFrames);
+		e.getGraphics().setFrames(e, e.rightIdleFrames, 20);
 	}
 
 	
