@@ -18,8 +18,11 @@ public class Level {
 	
 	private ArrayList<Tile> map;
 	
-	private static Tile TILE_WALL = new Tile(true, true, 0.1152, 0.4, new Color(100, 200, 100), '#'); // 0.1152
+	private static Tile TILE_WALL = new Tile(true, true, 0.1152, 0.4, new Color(150, 100, 0), '#'); // 0.1152
 	private static Tile TILE_AIR = new Tile(false, false, 0.1152, 0.03456, new Color(200, 200, 255), '.');
+	private static Tile TILE_STONE = new Tile(true, true, 0.1152, 0.4, new Color(100, 100, 100), '#'); // 0.1152
+	private static Tile TILE_GRASS = new Tile(true, true, 0.1152, 0.03456, new Color(100, 255, 100), '.');
+	private static Tile TILE_WOOD = new Tile(true, true, 0.1152, 0.03456, new Color(70, 30, 0), '.');
 	
 	public Level(int width, int height) {
 		this.width = width;
@@ -31,7 +34,7 @@ public class Level {
 		}
 		
 		//generate();
-		generateFromFile("Map1.txt");
+		generateFromFile("Map2.txt");
 		//printMapToConsole();
 	}
 	
@@ -128,8 +131,18 @@ public class Level {
 	                    case '.': //Floor tile
 	                    	setTile(x, y, Level.TILE_AIR);
 	                        break;
+	                    case '1': //Floor tile
+	                    	setTile(x, y, Level.TILE_GRASS);
+	                        break;
+	                    case '2': //Floor tile
+	                    	setTile(x, y, Level.TILE_WOOD);
+	                        break;
+	                    case '3': //Floor tile
+	                    	setTile(x, y, Level.TILE_STONE);
+	                        break;
 	                    default: //Everything else
 	                        System.out.println("ERROR: Tile not recognised (" + t + ")");
+	                        setTile(x, y, Level.TILE_WALL);
 	                        break;
 	                }
 	            }
