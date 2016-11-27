@@ -42,6 +42,9 @@ public class Entity {
 	public boolean onCeiling = false;
 	public boolean onFloor = false;
 	
+	public boolean isWalkingLeft = false;
+	public boolean isWalkingRight = false;
+	
 	public boolean isRewind = false;
 	
 	//ANIMATION STATE

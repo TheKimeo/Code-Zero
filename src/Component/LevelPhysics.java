@@ -14,9 +14,19 @@ public class LevelPhysics implements PhysicsComponent {
 
 	public void update(int frame, Entity e, Level level) {
 		e.isRewind = false;
+		e.isWalkingLeft = false;
+		e.isWalkingRight = false;
+		
 		ArrayList<Command> commands = e.getCommandStream().getCommands(frame);
 		for (Command c : commands) {
 			c.execute();
+		}
+		
+		if (e.isWalkingLeft == false && e.frames == e.leftIdleFrames) {
+			e.getGraphics().setFrames(e, e.leftIdleFrames);
+		}
+		if (e.isWalkingRight == false && e.frames == e.rightIdleFrames) {
+			e.getGraphics().setFrames(e, e.rightIdleFrames);
 		}
 		//if (e.isRewind) {
 		//	frame
