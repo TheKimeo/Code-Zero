@@ -49,4 +49,11 @@ public class InputController {
 	public void releaseKey(int key) {
 		keyState[key] = false;
 	}
+	
+	public boolean anyKeyPressed() {
+		for (int i = 0; i < NUM_KEYS; ++i)
+			if (keyState[i])
+				return true;
+		return false;
+	}
 }

@@ -86,10 +86,41 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		
 		FPSLimiter fpsLimiter = new FPSLimiter(60.0);
 		
+		
+		
 		//STUFF
 		running = true;
 		image = new BufferedImage(WIDTH, HEIGHT2, 1);
 		g = (Graphics2D) image.getGraphics();
+		
+		while (true) {
+			fpsLimiter.begin();
+			
+			g.setColor(new Color(230, 230, 230));
+			g.fillRect(0, 0, WIDTH, HEIGHT2);
+			
+			g.setFont(new Font("Ariel", Font.BOLD, 35));
+			
+			g.setColor(Color.BLACK);
+			g.drawString("Welcome to Code-Zero, a HackNotts 2016 project!", 100, 200);
+			g.drawString("This is a side-scrolling platformer that uses", 100, 300);
+			g.drawString("W, A, S, D controlls and E to go back in time.", 100, 340);
+			g.drawString("Try to reach the end (To the right) before your", 100, 400);
+			g.drawString("sanity runs out. Time traveling reduces sanity", 100, 440);
+			g.drawString("by a lot so don't use it too much!", 100, 480);
+			
+			g.drawString("Press SPACE to play!", 100, 650);
+			Graphics g2 = getGraphics();
+			g2.drawImage(image, 0, 0, WIDTH, HEIGHT2, null);
+			
+			g2.dispose();
+			
+			InputController.getInstance().update();
+			if (InputController.getInstance().anyKeyPressed())
+				break;
+			
+			fpsLimiter.end();
+		}
 		
 		int UPDATES_PER_SECOND = 125;
 		int CURRENT_FRAME = 0;
