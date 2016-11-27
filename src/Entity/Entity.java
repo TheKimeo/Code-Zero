@@ -42,16 +42,34 @@ public class Entity {
 	public boolean onCeiling = false;
 	public boolean onFloor = false;
 	
+	public boolean isWalkingLeft = false;
+	public boolean isWalkingRight = false;
+	
 	public boolean isRewind = false;
 	
 	//ANIMATION STATE
 	//Left right image arrays
-    private String[] leftIdlePaths = new String[]{"Subaru_LeftIdle1.png","Subaru_LeftIdle2.png"};
-    private String[] rightIdlePaths = new String[]{"Subaru_RightIdle1.png","Subaru_RightIdle2.png"};
-
+    private String[] leftIdlePaths = new String[]{"IdleAnimations/Subaru_LeftIdle1.png","IdleAnimations/Subaru_LeftIdle2.png"};
+    private String[] rightIdlePaths = new String[]{"IdleAnimations/Subaru_RightIdle1.png","IdleAnimations/Subaru_RightIdle2.png"};
+    private String[] leftWalkPaths = new String[]{"WalkAnimations/Subaru_LeftWalk1.png","WalkAnimations/Subaru_LeftWalk2.png", "WalkAnimations/Subaru_LeftWalk3.png","WalkAnimations/Subaru_LeftWalk4.png"};
+    private String[] rightWalkPaths = new String[]{"WalkAnimations/Subaru_RightWalk1.png","WalkAnimations/Subaru_RightWalk2.png","WalkAnimations/Subaru_RightWalk3.png","WalkAnimations/Subaru_RightWalk4.png"};
+    //Jumping
+    private String[] leftjumpStartPaths = new String[]{"JumpAnimations/Subaru_LeftJump1.png","JumpAnimations/Subaru_LeftJump2.png","JumpAnimations/Subaru_LeftJump3.png","JumpAnimations/Subaru_LeftJump4.png"};
+    private String[] leftjumpEndPaths = new String[]{"JumpAnimations/Subaru_LeftJump5.png","JumpAnimations/Subaru_LeftJump6.png", "JumpAnimations/Subaru_LeftJump7.png", "JumpAnimations/Subaru_LeftJump8.png", "JumpAnimations/Subaru_LeftJump9.png"};
+    private String[] rightJumpStartPaths = new String[]{"JumpAnimations/Subaru_RightJump1.png","JumpAnimations/Subaru_RightJump2.png","JumpAnimations/Subaru_RightJump3.png","JumpAnimations/Subaru_RightJump4.png"};
+    private String[] rightjumpEndPaths = new String[]{"JumpAnimations/Subaru_RightJump5.png","JumpAnimations/Subaru_RightJump6.png", "JumpAnimations/Subaru_RightJump7.png", "JumpAnimations/Subaru_RightJump8.png", "JumpAnimations/Subaru_RightJump9.png"};
+    //right left idle
 	public BufferedImage[] leftIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftIdlePaths)));
 	public BufferedImage[] rightIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightIdlePaths)));
-	
+    //right left moving
+    public BufferedImage[] leftWalkFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftWalkPaths)));
+	public BufferedImage[] rightWalkFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightWalkPaths)));
+    //left right jumps
+    public BufferedImage[] leftJumpStartFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftjumpStartPaths)));
+    public BufferedImage[] rightJumpStartFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightJumpStartPaths)));
+    public BufferedImage[] leftJumpEndFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftjumpEndPaths)));
+    public BufferedImage[] rightJumpEndFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightjumpEndPaths)));
+
 	public BufferedImage[] frames;
 	public int currentFrame;
 	public int numFrames;

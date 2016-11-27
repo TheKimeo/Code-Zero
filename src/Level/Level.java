@@ -18,7 +18,7 @@ public class Level {
 	
 	private ArrayList<Tile> map;
 	
-	private static Tile TILE_WALL = new Tile(true, true, 0.1152, 0.1152, new Color(100, 200, 100), '#');
+	private static Tile TILE_WALL = new Tile(true, true, 0.1152, 0.4, new Color(100, 200, 100), '#'); // 0.1152
 	private static Tile TILE_AIR = new Tile(false, false, 0.1152, 0.03456, new Color(200, 200, 255), '.');
 	
 	public Level(int width, int height) {
