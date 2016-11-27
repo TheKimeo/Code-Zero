@@ -79,8 +79,11 @@ public class CommandStream {
 		if ((i & STOP_JUMP) == STOP_JUMP) {
 			ret.add(new StopJumpCommand(e));
 		}
+		if ((i & DOWN) == DOWN) {
+			ret.add(new DeathCommand(e));
+		}
 		if ((i & SPECIAL) == SPECIAL) {
-			ret.add(new DeathCommand(e, frame));
+			ret.add(new TimeCommand(e, frame));
 		}
 		return ret;
 	}
