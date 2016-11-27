@@ -97,7 +97,10 @@ public class Entity {
 	public boolean warping = false;
 	public double destx = 0.0;
 	public double desty = 0.0;
-	
+	private static int ID = 0;
+	public int id;
+	public double maxSanitiy = 100;
+	public double sanitiy = maxSanitiy;
 	public Entity(double width, double height, InputComponent input, PhysicsComponent physics, GraphicsComponent graphics) {
 		this.input = input;
 		this.physics = physics;
@@ -107,6 +110,7 @@ public class Entity {
 		this.height = height;
 		
 		boundingBox = new Rectangle(75, 112);
+		id = ID++;
 	}
 	
 	public void reset() {

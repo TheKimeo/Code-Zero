@@ -45,7 +45,10 @@ public class LevelPhysics implements PhysicsComponent {
 					e.getGraphics().setFrames(e, e.leftIdleFrames, 20);
 			}
 		}
-		
+
+		if(frame % 225 == 0){
+		    e.sanitiy -= 1;
+        }
 		
 		ArrayList<TileStorage> inside = level.getTilesWithin(e);
 		ArrayList<TileStorage> below = level.getTilesBelow(e);

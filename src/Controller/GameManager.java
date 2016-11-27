@@ -1,8 +1,6 @@
 package Controller;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -145,7 +143,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		for (Entity e : ai)
 			e.getGraphics().update(e, g, camera);
 		player.getGraphics().update(player, g, camera);
-		
+		drawGUI(g);
 		Graphics g2 = getGraphics();
 		g2.drawImage(image, 0, 0, WIDTH, HEIGHT2, null);
 		
@@ -153,7 +151,14 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	}
 	
 	
-	
+	private void drawGUI(Graphics2D g){
+	    g.setColor(new Color(0x757575));
+	    g.fillRect(30,30, (int)player.maxSanitiy*2,20);
+        g.setColor(new Color(0x6013AE));
+        g.fillRect(30,30, (int)player.sanitiy*2,20);
+        g.setColor(new Color(255,255,255,50));
+        g.fillRect(30,30, (int)player.maxSanitiy*2,5);
+    }
 	
 	
 	@Override

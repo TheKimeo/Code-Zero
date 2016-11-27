@@ -1,7 +1,6 @@
 package Component;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import Controller.Camera;
@@ -41,8 +40,9 @@ public class EntityGraphics extends GraphicsComponent {
 			g.fillRect((int) (e.x - c.x), (int) (e.y - c.y), (int) e.width, (int) e.height);
 		}
 //		g.fillRect(10,10,15,15);
-        g.setColor(new Color(0xE500FF));
-		g.drawString(e.toString(), (int)(e.x - c.x), (int)(e.y - c.y));
+//        g.setColor(new Color(0xE500FF));
+//		g.setFont(new Font("CourierNew", Font.BOLD, 24));
+//		g.drawString("Entity: "+e.id, (int)(e.x - c.x), (int)(e.y - c.y));
         g.drawImage(getImage(e), (int) (e.x - c.x - e.renderOffsetX), (int) (e.y - c.y - e.renderOffsetY), e.boundingBox.width, e.boundingBox.height, null);
 		
 	}
