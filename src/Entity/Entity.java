@@ -57,8 +57,8 @@ public class Entity {
     private static String[] leftWalkPaths = new String[]{"WalkAnimations/Subaru_LeftWalk1.png","WalkAnimations/Subaru_LeftWalk2.png", "WalkAnimations/Subaru_LeftWalk3.png","WalkAnimations/Subaru_LeftWalk4.png"};
     private static String[] rightWalkPaths = new String[]{"WalkAnimations/Subaru_RightWalk1.png","WalkAnimations/Subaru_RightWalk2.png","WalkAnimations/Subaru_RightWalk3.png","WalkAnimations/Subaru_RightWalk4.png"};
     //reposition
-    private static String[] leftDeath = new String[]{"DeathAnimations/Subaru_LeftDeath1.png","DeathAnimations/Subaru_LeftDeath2.png","DeathAnimations/Subaru_LeftDeath3.png","DeathAnimations/Subaru_LeftDeath4.png","DeathAnimations/Subaru_LeftDeath5.png","DeathAnimations/Subaru_LeftDeath6.png","DeathAnimations/Subaru_LeftDeath7.png","DeathAnimations/Subaru_LeftDeath8.png","DeathAnimations/Subaru_LeftDeath9.png"};
-    private static String[] rightDeath = new String[]{"DeathAnimations/Subaru_RightDeath1.png","DeathAnimations/Subaru_RightDeath2.png","DeathAnimations/Subaru_RightDeath3.png","DeathAnimations/Subaru_RightDeath4.png","DeathAnimations/Subaru_RightDeath5.png","DeathAnimations/Subaru_RightDeath6.png","DeathAnimations/Subaru_RightDeath7.png","DeathAnimations/Subaru_RightDeath8.png","DeathAnimations/Subaru_RightDeath9.png"};
+    private static String[] leftDeath = new String[]{"DeathAnimations/Subaru_LeftDeath1.png","DeathAnimations/Subaru_LeftDeath2.png","DeathAnimations/Subaru_LeftDeath3.png","DeathAnimations/Subaru_LeftDeath4.png","DeathAnimations/Subaru_LeftDeath5.png","DeathAnimations/Subaru_LeftDeath6.png","DeathAnimations/Subaru_LeftDeath7.png","DeathAnimations/Subaru_LeftDeath8.png"}; //,"DeathAnimations/Subaru_LeftDeath9.png"
+    private static String[] rightDeath = new String[]{"DeathAnimations/Subaru_RightDeath1.png","DeathAnimations/Subaru_RightDeath2.png","DeathAnimations/Subaru_RightDeath3.png","DeathAnimations/Subaru_RightDeath4.png","DeathAnimations/Subaru_RightDeath5.png","DeathAnimations/Subaru_RightDeath6.png","DeathAnimations/Subaru_RightDeath7.png","DeathAnimations/Subaru_RightDeath8.png"}; //,"DeathAnimations/Subaru_RightDeath9.png"
 
     //right left idle
 	public static BufferedImage[] leftIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftIdlePaths)));
@@ -74,6 +74,10 @@ public class Entity {
 	public BufferedImage[] frames;
 	public int currentFrame;
 	public int numFrames;
+	
+	
+	public boolean facing = false;
+	
 	
 	public int count;
 	public int delay;

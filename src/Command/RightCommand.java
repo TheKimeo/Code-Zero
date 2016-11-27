@@ -18,6 +18,7 @@ public class RightCommand implements Command {
 			if (!e.onFloor)
 				e.delay = 2;
 		}
+		e.facing = true;
 		e.isWalkingRight = true;
 	}
 	

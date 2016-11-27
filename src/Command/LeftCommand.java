@@ -18,6 +18,7 @@ public class LeftCommand implements Command {
 			if (!e.onFloor)
 				e.delay = 2;
 		}
+		e.facing = false;
 		e.isWalkingLeft = true;
 	}
 	

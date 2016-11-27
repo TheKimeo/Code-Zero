@@ -15,6 +15,12 @@ public class DeathCommand implements Command {
 	public void execute() {
 		int destFrame = frame - (int) (125.0 * 3.0);
 		if (destFrame - e.teleportFrame < 0) destFrame = e.teleportFrame;
+		
+		if (e.facing)
+			e.getGraphics().setFrames(e, e.rightDeathFrames, 6);
+		else
+			e.getGraphics().setFrames(e, e.leftDeathFrames, 6);
+		e.replay = false;
 		Pair<Double, Double> pos = e.positions.get(destFrame);
 		e.x = pos.first();
 		e.y = pos.second();
