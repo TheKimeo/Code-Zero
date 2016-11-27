@@ -7,16 +7,9 @@ import java.awt.image.BufferedImage;
 import Controller.Camera;
 import Entity.Entity;
 
-public class EntityGraphics implements GraphicsComponent {
+public class EntityGraphics extends GraphicsComponent {
 	
-	public void setFrames(Entity e, BufferedImage[] frames) {
-		e.frames = frames;
-		e.currentFrame = 0;
-		e.count = 0;
-		e.timesPlayed = 0;
-		e.delay = 2;
-		e.numFrames = frames.length;
-	}
+
 	
 	public void setDelay(Entity e, int i) { e.delay = i; }
 	public void setFrame(Entity e, int i) { e.currentFrame = i; }
@@ -38,7 +31,7 @@ public class EntityGraphics implements GraphicsComponent {
 		}
 
 
-//        System.out.println("Loading image: " + getImage(e).toString());
+
 
 
 //		g.setColor(new Color(0x00FF00));
@@ -54,8 +47,8 @@ public class EntityGraphics implements GraphicsComponent {
 	public boolean hasPlayedOnce(Entity e) { return e.timesPlayed > 0; }
 	public boolean hasPlayed(Entity e, int i) { return e.timesPlayed == i; }
 	
-	public void reset() {
-		
+	public void reset(Entity e) {
+		e.getGraphics().setFrames(e, e.rightIdleFrames);
 	}
 
 	
