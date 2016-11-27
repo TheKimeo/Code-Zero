@@ -41,7 +41,7 @@ public class EntityGraphics extends GraphicsComponent {
 			g.fillRect((int) (e.x - c.x), (int) (e.y - c.y), (int) e.width, (int) e.height);
 		}
 //		g.fillRect(10,10,15,15);
-		g.drawImage(getImage(e), (int) (e.x - c.x - e.renderOffsetX), (int) (e.y - c.y - e.renderOffsetY), e.boundingBox.width, e.boundingBox.height,null);
+		g.drawImage(getImage(e), (int) (e.x - c.x - e.renderOffsetX), (int) (e.y - c.y - e.renderOffsetY), e.boundingBox.width, e.boundingBox.height, null);
 		
 	}
 	
