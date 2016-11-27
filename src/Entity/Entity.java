@@ -56,9 +56,12 @@ public class Entity {
     //walk
     private static String[] leftWalkPaths = new String[]{"WalkAnimations/Subaru_LeftWalk1.png","WalkAnimations/Subaru_LeftWalk2.png", "WalkAnimations/Subaru_LeftWalk3.png","WalkAnimations/Subaru_LeftWalk4.png"};
     private static String[] rightWalkPaths = new String[]{"WalkAnimations/Subaru_RightWalk1.png","WalkAnimations/Subaru_RightWalk2.png","WalkAnimations/Subaru_RightWalk3.png","WalkAnimations/Subaru_RightWalk4.png"};
-    //reposition
+    //death
     private static String[] leftDeath = new String[]{"DeathAnimations/Subaru_LeftDeath1.png","DeathAnimations/Subaru_LeftDeath2.png","DeathAnimations/Subaru_LeftDeath3.png","DeathAnimations/Subaru_LeftDeath4.png","DeathAnimations/Subaru_LeftDeath5.png","DeathAnimations/Subaru_LeftDeath6.png","DeathAnimations/Subaru_LeftDeath7.png","DeathAnimations/Subaru_LeftDeath8.png","DeathAnimations/Subaru_LeftDeath9.png"};
     private static String[] rightDeath = new String[]{"DeathAnimations/Subaru_RightDeath1.png","DeathAnimations/Subaru_RightDeath2.png","DeathAnimations/Subaru_RightDeath3.png","DeathAnimations/Subaru_RightDeath4.png","DeathAnimations/Subaru_RightDeath5.png","DeathAnimations/Subaru_RightDeath6.png","DeathAnimations/Subaru_RightDeath7.png","DeathAnimations/Subaru_RightDeath8.png","DeathAnimations/Subaru_RightDeath9.png"};
+    //left right warp
+    private static String[] leftWarp = new String[]{"TimeWarpAnimations/Subaru_LeftTime1.png", "TimeWarpAnimations/Subaru_LeftTime2.png", "TimeWarpAnimations/Subaru_LeftTime3.png", "TimeWarpAnimations/Subaru_LeftTime4.png", "TimeWarpAnimations/Subaru_LeftTime5.png", "TimeWarpAnimations/Subaru_LeftTime4.png", "TimeWarpAnimations/Subaru_LeftTime3.png", "TimeWarpAnimations/Subaru_LeftTime2.png", "TimeWarpAnimations/Subaru_LeftTime1.png",};
+    private static String[] rightWarp = new String[]{"TimeWarpAnimations/Subaru_RightTime1.png", "TimeWarpAnimations/Subaru_RightTime2.png", "TimeWarpAnimations/Subaru_RightTime3.png", "TimeWarpAnimations/Subaru_RightTime4.png", "TimeWarpAnimations/Subaru_RightTime5.png", "TimeWarpAnimations/Subaru_RightTime4.png", "TimeWarpAnimations/Subaru_RightTime3.png", "TimeWarpAnimations/Subaru_RightTime2.png", "TimeWarpAnimations/Subaru_RightTime1.png",};
 
     //right left idle
 	public static BufferedImage[] leftIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftIdlePaths)));
@@ -66,10 +69,12 @@ public class Entity {
     //right left moving
     public static BufferedImage[] leftWalkFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftWalkPaths)));
 	public static BufferedImage[] rightWalkFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightWalkPaths)));
-    //left right reposition
+    //left right death
     public static BufferedImage[] leftDeathFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftDeath)));
     public static BufferedImage[] rightDeathFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightDeath)));
-    
+    //left right warp
+    public static BufferedImage[] leftWarpFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftWarp)));
+    public static BufferedImage[] rightWarpFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightWarp)));
 
 	public BufferedImage[] frames;
 	public int currentFrame;
