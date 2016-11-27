@@ -13,8 +13,10 @@ public class RightCommand implements Command {
 		e.dx += 0.15;
 		if (e.onFloor && e.delay != 7)
 			e.delay = 7;
-		if (e.onFloor && e.frames != e.rightWalkFrames) {
+		if (e.frames != e.rightWalkFrames) {
 			e.getGraphics().setFrames(e,e.rightWalkFrames, 7);
+			if (!e.onFloor)
+				e.delay = 2;
 		}
 		e.isWalkingRight = true;
 	}
