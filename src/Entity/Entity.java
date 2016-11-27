@@ -97,8 +97,8 @@ public class Entity {
 		input.reset();
 		physics.reset();
 		graphics.reset(this);
-		x = 3.0 * Tile.TILE_SIZE;
-		y = 3.0 * Tile.TILE_SIZE;
+		x = 30.0 * Tile.TILE_SIZE;
+		y = 30.0 * Tile.TILE_SIZE;
 	}
 	
 	public InputComponent getInput() {

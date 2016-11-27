@@ -59,7 +59,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		camera = new Camera(WIDTH, HEIGHT);
 		
 
-		level = new Level(480, 40);
+		level = new Level(480, 80);
 		
 		InputComponent input = new KeyboardInput(); //new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
