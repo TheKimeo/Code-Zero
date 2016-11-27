@@ -102,6 +102,8 @@ public class Entity {
 	
 	public boolean warping = false;
 	public boolean lockinput = false;
+	public boolean won = false;
+	public boolean lost = false;
 	public double destx = 0.0;
 	public double desty = 0.0;
 	private static int ID = 0;

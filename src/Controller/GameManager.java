@@ -111,7 +111,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 			}
 			
 			draw();
-			
+
 			count++;
 			fpsLimiter.end();
 			if (fpsLimiter.isTick()) {
@@ -172,6 +172,20 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
         g.fillRect(30,30, (int)player.sanitiy*2,20);
         g.setColor(new Color(255,255,255,50));
         g.fillRect(30,30, (int)player.maxSanitiy*2,5);
+        if(player.won) {
+            g.setFont(new Font("Ariel",Font.BOLD,32));
+            g.setColor(Color.GRAY);
+            g.drawString("You won with " + (int)player.sanitiy + " sanity remaining!",WIDTH/2 - 248,HEIGHT/2 - 48);
+            g.setColor(new Color(255,255,255));
+            g.drawString("You won with " + (int)player.sanitiy + " sanity remaining!",WIDTH/2 - 250,HEIGHT/2 - 50);
+        }
+        if(player.lost) {
+            g.setFont(new Font("Ariel",Font.BOLD,32));
+            g.setColor(Color.GRAY);
+            g.drawString("You lost!",WIDTH/2 - 68,HEIGHT/2 - 48);
+            g.setColor(new Color(255,255,255));
+            g.drawString("You lost!",WIDTH/2 - 70,HEIGHT/2 - 50);
+        }
     }
 	
 	

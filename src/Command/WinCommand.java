@@ -12,6 +12,7 @@ public class WinCommand implements Command {
 	public void execute() {
 		e.getGraphics().setFrames(e, e.rightJumpStartFrames, 5);
 		e.lockinput = true;
+		e.won = true;//yay
 	}
 	
 	public void undo() {

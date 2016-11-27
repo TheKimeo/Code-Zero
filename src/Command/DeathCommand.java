@@ -18,6 +18,7 @@ public class DeathCommand implements Command {
 			e.getGraphics().setFrames(e, e.leftDeathFrames, 6);
 		e.replay = false;
 		e.lockinput = true;
+		e.lost = true;
 	}
 	
 	public void undo() {
