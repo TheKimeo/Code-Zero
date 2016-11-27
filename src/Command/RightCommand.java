@@ -11,8 +11,10 @@ public class RightCommand implements Command {
 	
 	public void execute() {
 		e.dx += 0.2304;
-		if (e.frames != e.rightIdleFrames)
+		if (e.frames != e.rightIdleFrames) {
 			e.getGraphics().setFrames(e,e.rightIdleFrames);
+		}
+		e.isWalkingRight = true;
 	}
 	
 	public void undo() {

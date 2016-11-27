@@ -11,8 +11,10 @@ public class LeftCommand implements Command {
 	
 	public void execute() {
 		e.dx -= 0.2304;
-		if (e.frames != e.leftIdleFrames)
+		if (e.frames != e.leftIdleFrames) {
 			e.getGraphics().setFrames(e, e.leftIdleFrames);
+		}
+		e.isWalkingLeft = true;
 	}
 	
 	public void undo() {
