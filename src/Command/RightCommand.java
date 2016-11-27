@@ -11,6 +11,7 @@ public class RightCommand implements Command {
 	
 	public void execute() {
 		e.dx += 0.2304;
+		e.getGraphics().setFrames(e,e.rightIdleFrames);
 	}
 	
 	public void undo() {

@@ -1,12 +1,15 @@
 package Entity;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import Command.CommandStream;
 import Component.GraphicsComponent;
 import Component.InputComponent;
 import Component.PhysicsComponent;
 import Level.Tile;
+import Utils.ContentLoader;
 import javafx.util.Pair;
 
 public class Entity {
@@ -35,6 +38,17 @@ public class Entity {
 	public boolean onFloor = false;
 	
 	//ANIMATION STATE (MAKE GETTERS AND SETTERS)
+
+
+	//Left right image arrays
+    private String[] leftIdlePaths = new String[]{"Subaru_LeftIdle1.png","Subaru_LeftIdle2.png"};
+    private String[] rightIdlePaths = new String[]{"Subaru_RightIdle1.png","Subaru_RightIdle2.png"};
+
+	public BufferedImage[] leftIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftIdlePaths)));
+	public BufferedImage[] rightIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightIdlePaths)));
+
+
+
 	public Rectangle renderBox = new Rectangle(width, height);
 	public BufferedImage[] frames;
 	public int currentFrame;
@@ -57,7 +71,7 @@ public class Entity {
 	public void reset() {
 		input.reset();
 		physics.reset();
-		graphics.reset();
+		graphics.reset(this);
 		x = 3.0 * Tile.TILE_SIZE;
 		y = 3.0 * Tile.TILE_SIZE;
 	}
