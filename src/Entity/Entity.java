@@ -46,12 +46,16 @@ public class Entity {
 	
 	//ANIMATION STATE
 	//Left right image arrays
-    private String[] leftIdlePaths = new String[]{"Subaru_LeftIdle1.png","Subaru_LeftIdle2.png"};
-    private String[] rightIdlePaths = new String[]{"Subaru_RightIdle1.png","Subaru_RightIdle2.png"};
+    private String[] leftIdlePaths = new String[]{"IdleAnimations/Subaru_LeftIdle1.png","IdleAnimations/Subaru_LeftIdle2.png"};
+    private String[] rightIdlePaths = new String[]{"IdleAnimations/Subaru_RightIdle1.png","IdleAnimations/Subaru_RightIdle2.png"};
+    private String[] leftWalkPaths = new String[]{"WalkAnimations/Subaru_LeftWalk1.png","WalkAnimations/Subaru_LeftWalk2.png", "WalkAnimations/Subaru_LeftWalk3.png","WalkAnimations/Subaru_LeftWalk4.png"};
+    private String[] rightWalkPaths = new String[]{"WalkAnimations/Subaru_RightWalk1.png","WalkAnimations/Subaru_RightWalk2.png","WalkAnimations/Subaru_RightWalk3.png","WalkAnimations/Subaru_RightWalk4.png"};
 
 	public BufferedImage[] leftIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftIdlePaths)));
 	public BufferedImage[] rightIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightIdlePaths)));
-	
+	public BufferedImage[] leftWalkFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftWalkPaths)));
+	public BufferedImage[] rightWalkFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightWalkPaths)));
+
 	public BufferedImage[] frames;
 	public int currentFrame;
 	public int numFrames;
