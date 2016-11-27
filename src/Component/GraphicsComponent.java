@@ -16,5 +16,6 @@ public abstract class GraphicsComponent {
 		e.timesPlayed = 0;
 		e.delay = delay;
 		e.numFrames = frames.length;
+		e.replay = true;
 	}
 }

@@ -10,9 +10,10 @@ public class LeftCommand implements Command {
 	}
 	
 	public void execute() {
-//		e.dx -= 0.2304;
 		e.dx -= 0.15;
-		if (e.frames != e.leftWalkFrames) {
+		if (e.onFloor && e.delay != 7)
+			e.delay = 7;
+		if (e.onFloor && e.frames != e.leftWalkFrames) {
 			e.getGraphics().setFrames(e, e.leftWalkFrames, 7);
 		}
 		e.isWalkingLeft = true;

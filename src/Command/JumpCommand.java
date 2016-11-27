@@ -11,7 +11,7 @@ private Entity e;
 	
 	public void execute() {
 		if (e.onFloor) {
-			e.getGraphics().setFrames(e,e.isWalkingLeft ? e.leftJumpStartFrames : e.rightJumpStartFrames, 20);
+			e.delay = 2;
 			e.jumpTime = 1; //31
 		}
 	}

@@ -78,7 +78,7 @@ public class Entity {
 	public int delay;
 	
 	public int timesPlayed = 0;
-	
+	public boolean replay = true;
 	
 	
 	

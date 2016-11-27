@@ -67,6 +67,12 @@ public class CommandStream {
 	
 	public ArrayList<Command> bitwiseReverse(int i) {
 		ArrayList<Command> ret = new ArrayList<>();
+		if ((i & LEFT) == LEFT) {
+			ret.add(new LeftCommand(e));
+		}
+		if ((i & RIGHT) == RIGHT) {
+			ret.add(new RightCommand(e));
+		}
 		if ((i & JUMP) == JUMP) {
 			ret.add(new JumpCommand(e));
 		}
@@ -75,12 +81,6 @@ public class CommandStream {
 		}
 		if ((i & DOWN) == DOWN) {
 		//	ret.add(new JumpCommand());
-		}
-		if ((i & LEFT) == LEFT) {
-			ret.add(new LeftCommand(e));
-		}
-		if ((i & RIGHT) == RIGHT) {
-			ret.add(new RightCommand(e));
 		}
 		if ((i & SPECIAL) == SPECIAL) {
 			//ret.add(new SpecialCommand());

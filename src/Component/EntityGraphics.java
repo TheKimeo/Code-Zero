@@ -18,19 +18,21 @@ public class EntityGraphics extends GraphicsComponent {
 	@SuppressWarnings("unused")
 	public void update(Entity e, Graphics2D g, Camera c) {
 
-		if(e.delay == -1) return;
-
-		e.count++;
-
-		if(e.count == e.delay) {
-			e.currentFrame++;
-			e.count = 0;
+		if(e.delay != -1) {
+			e.count++;
+			
+			if (e.replay || e.currentFrame != e.numFrames - 1) {
+				if(e.count >= e.delay) {
+					e.currentFrame++;
+					e.count = 0;
+				}
+				
+				if(e.currentFrame >= e.numFrames) {
+					e.currentFrame = 0;
+					e.timesPlayed++;
+				}
+			}
 		}
-		if(e.currentFrame == e.numFrames) {
-			e.currentFrame = 0;
-			e.timesPlayed++;
-		}
-
 
 
 
