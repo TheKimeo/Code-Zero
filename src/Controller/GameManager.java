@@ -57,7 +57,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		camera = new Camera(WIDTH, HEIGHT);
 		
 
-		level = new Level(480, 80);
+		level = new Level(480, 90);
 		
 		InputComponent input = new KeyboardInput(); //new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
@@ -65,7 +65,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		player = new Entity(47, 107, input, physics, graphics); //67, 107
 		
 		InputComponent aiinput = new AIInput();
-		for (int i = 0; i < 20; ++i)
+		for (int i = 0; i < 1; ++i)
 			ai.add(new Entity(47, 107, aiinput, physics, graphics));
 		for (Entity e : ai)
 			e.reset();
