@@ -28,8 +28,8 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	// dimensions
 	// HEIGHT is the playing area size
 	// HEIGHT2 includes the bottom window
-	public static final int WIDTH = 800;
-	public static final int HEIGHT = 600;
+	public static final int WIDTH = 1024;
+	public static final int HEIGHT = 768;
 	public static final int HEIGHT2 = HEIGHT + 16;
 	
 	// game loop stuff
@@ -65,7 +65,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		player = new Entity(47, 107, input, physics, graphics); //67, 107
 		
 		InputComponent aiinput = new AIInput();
-		for (int i = 0; i < 200; ++i)
+		for (int i = 0; i < 1; ++i)
 			ai.add(new Entity(47, 107, aiinput, physics, graphics));
 		for (Entity e : ai)
 			e.reset();
