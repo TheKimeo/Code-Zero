@@ -14,6 +14,7 @@ public class CommandStream {
 	public static int LEFT = 0x8;
 	public static int RIGHT = 0x10;
 	public static int SPECIAL = 0x20;
+	public static int DEATH = 0x40;
 	
 	private ArrayList<Pair<Integer, Integer>> commandList = new ArrayList<>();
 	private boolean isSorted = true;
@@ -79,11 +80,11 @@ public class CommandStream {
 		if ((i & STOP_JUMP) == STOP_JUMP) {
 			ret.add(new StopJumpCommand(e));
 		}
-		if ((i & DOWN) == DOWN) {
-			ret.add(new DeathCommand(e));
-		}
 		if ((i & SPECIAL) == SPECIAL) {
 			ret.add(new TimeCommand(e, frame));
+		}
+		if ((i & DEATH) == DEATH) {
+			ret.add(new DeathCommand(e));
 		}
 		return ret;
 	}
