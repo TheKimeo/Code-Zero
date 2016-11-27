@@ -47,7 +47,7 @@ public class Tile {
 			g.drawImage(bufferedImage, (int) (x * TILE_SIZE - c.x), (int) (y * TILE_SIZE - c.y), TILE_SIZE, TILE_SIZE, null);
 			//g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
 		}else {
-			g.setColor(new Color(200, 200, 255));
+			g.setColor(new Color(1f,0f,0f,.5f));
 			g.fillRect(x * TILE_SIZE - (int) c.x, y * TILE_SIZE - (int) c.y, TILE_SIZE, TILE_SIZE);
 		}
 	}
