@@ -1,13 +1,14 @@
 package Entity;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import Command.CommandStream;
 import Component.GraphicsComponent;
 import Component.InputComponent;
 import Component.PhysicsComponent;
 import Level.Tile;
-import javafx.util.Pair;
+import Utils.Pair;
 
 public class Entity {
 	private InputComponent input;
@@ -15,6 +16,7 @@ public class Entity {
 	private GraphicsComponent graphics;
 	
 	private CommandStream commandStream = new CommandStream(this);
+	public ArrayList<Pair<Double, Double>> positions = new ArrayList<>();
 	
 	//PHYSICS STATE
 	public final static int width = 32;
@@ -33,6 +35,8 @@ public class Entity {
 	
 	public boolean onCeiling = false;
 	public boolean onFloor = false;
+	
+	public boolean isRewind = false;
 	
 	//ANIMATION STATE (MAKE GETTERS AND SETTERS)
 	public Rectangle renderBox = new Rectangle(width, height);

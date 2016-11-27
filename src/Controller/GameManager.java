@@ -39,6 +39,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	private Thread thread;
 	private boolean running;
 	private final int TARGET_FPS = 60;
+	public static int frameDelay = 0;
 	
 	// drawing stuff
 	private BufferedImage image;
@@ -58,7 +59,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		camera = new Camera(WIDTH, HEIGHT);
 		
 
-		level = new Level(80, 40);
+		level = new Level(480, 40);
 		
 		InputComponent input = new KeyboardInput(); //new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
@@ -109,14 +110,20 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 			fpsLimiter.begin();
 
 			int REALTIME_FRAME = (int) Math.floor((FPSLimiter.getTicks() - START_TICKS) * (UPDATES_PER_SECOND / 1000.0f));
-			for (int i = 0, n = REALTIME_FRAME - CURRENT_FRAME; i < n; ++i) {
-				handleInput(CURRENT_FRAME);
-				
-				update(CURRENT_FRAME);
-
-				++CURRENT_FRAME;
+			int n = (REALTIME_FRAME - CURRENT_FRAME) - frameDelay;
+			if (n > 0) {
+				for (int i = 0; i < n; ++i) {
+					handleInput(CURRENT_FRAME);
+					
+					update(CURRENT_FRAME);
+	
+					++CURRENT_FRAME;
+				}
+			} else {
+				for (int i = n; i > 0; --i) {
+					
+				}
 			}
-
 			draw();
 			
 			count++;

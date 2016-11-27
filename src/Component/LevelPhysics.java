@@ -13,9 +13,13 @@ import Utils.Pair;
 public class LevelPhysics implements PhysicsComponent {
 
 	public void update(int frame, Entity e, Level level) {
+		e.isRewind = false;
 		ArrayList<Command> commands = e.getCommandStream().getCommands(frame);
 		for (Command c : commands) {
 			c.execute();
+		}
+		if (e.isRewind) {
+			return;
 		}
 		
 		ArrayList<TileStorage> inside = level.getTilesWithin(e);
@@ -71,6 +75,12 @@ public class LevelPhysics implements PhysicsComponent {
 		
 		e.boundingBox.x = (int) e.x;
 		e.boundingBox.y = (int) e.y;
+		
+		if (frame <= e.positions.size()) {
+			e.positions.add(new Pair<Double, Double>(e.x, e.y));
+		} else {
+			e.positions.set(frame, new Pair<Double, Double>(e.x, e.y));
+		}
 	}
 	
 	public boolean collideWithTile(Entity e, Tile t, double tileCenterX, double tileCenterY) {
