@@ -27,7 +27,8 @@ public class KeyboardInput implements InputComponent {
 		if (input.isDown(InputController.K4)) {
 			cs.addCommand(frame, CommandStream.RIGHT);
 		}
-		if (input.isPressed(InputController.K5)) {
+		if (input.isPressed(InputController.K5) && e.sanitiy >= 10) {
+			e.sanitiy -= 10;
 			cs.addCommand(frame, CommandStream.SPECIAL);
 		}
 	}
