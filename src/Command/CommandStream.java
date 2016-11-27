@@ -15,6 +15,7 @@ public class CommandStream {
 	public static int RIGHT = 0x10;
 	public static int SPECIAL = 0x20;
 	public static int DEATH = 0x40;
+	public static int WIN = 0x80;
 	
 	private ArrayList<Pair<Integer, Integer>> commandList = new ArrayList<>();
 	private boolean isSorted = true;
@@ -85,6 +86,9 @@ public class CommandStream {
 		}
 		if ((i & DEATH) == DEATH) {
 			ret.add(new DeathCommand(e));
+		}
+		if ((i & WIN) == WIN) {
+			ret.add(new WinCommand(e));
 		}
 		return ret;
 	}

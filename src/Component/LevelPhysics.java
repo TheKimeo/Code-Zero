@@ -45,7 +45,7 @@ public class LevelPhysics implements PhysicsComponent {
 			}
 		}
 
-		if(frame % 225 == 0){
+		if(frame % 225 == 0 && !e.lockinput){
 		    e.sanitiy -= 1;
         }
 		

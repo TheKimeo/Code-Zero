@@ -4,6 +4,7 @@ import Command.CommandStream;
 import Controller.InputController;
 import Entity.Entity;
 import Level.Level;
+import Level.Tile;
 
 public class KeyboardInput implements InputComponent {
 	public void update(int frame, Entity e, Level level) {
@@ -33,6 +34,9 @@ public class KeyboardInput implements InputComponent {
 		}
 		if (e.sanitiy <= 0) {
 			cs.addCommand(frame, CommandStream.DEATH);
+		}
+		if (e.x / Tile.TILE_SIZE > 437) {
+			cs.addCommand(frame, CommandStream.WIN);
 		}
 	}
 
