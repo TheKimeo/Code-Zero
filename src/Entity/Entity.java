@@ -22,10 +22,13 @@ public class Entity {
 	public ArrayList<Pair<Double, Double>> positions = new ArrayList<>();
 	
 	//PHYSICS STATE
-	public final static int width = 32;
-	public final static int height = 48;
+	public double width = 75.0; //50
+	public double height = 112.0; //75
+
+	public double renderOffsetX = 14.0; //4.0
+	public double renderOffsetY = 0.0; //0.0
 	
-	public Rectangle boundingBox = new Rectangle(width, height);
+	public Rectangle boundingBox;
 	
 	public double x = 0.0;
 	public double y = 0.0;
@@ -41,19 +44,14 @@ public class Entity {
 	
 	public boolean isRewind = false;
 	
-	//ANIMATION STATE (MAKE GETTERS AND SETTERS)
-
-
+	//ANIMATION STATE
 	//Left right image arrays
     private String[] leftIdlePaths = new String[]{"Subaru_LeftIdle1.png","Subaru_LeftIdle2.png"};
     private String[] rightIdlePaths = new String[]{"Subaru_RightIdle1.png","Subaru_RightIdle2.png"};
 
 	public BufferedImage[] leftIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(leftIdlePaths)));
 	public BufferedImage[] rightIdleFrames = ContentLoader.animationSprites(new ArrayList<>(Arrays.asList(rightIdlePaths)));
-
-
-
-	public Rectangle renderBox = new Rectangle(width, height);
+	
 	public BufferedImage[] frames;
 	public int currentFrame;
 	public int numFrames;
@@ -66,10 +64,15 @@ public class Entity {
 	
 	
 	
-	public Entity(InputComponent input, PhysicsComponent physics, GraphicsComponent graphics) {
+	public Entity(double width, double height, InputComponent input, PhysicsComponent physics, GraphicsComponent graphics) {
 		this.input = input;
 		this.physics = physics;
 		this.graphics = graphics;
+		
+		this.width = width;
+		this.height = height;
+		
+		boundingBox = new Rectangle(75, 112);
 	}
 	
 	public void reset() {

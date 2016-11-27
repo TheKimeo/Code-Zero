@@ -12,6 +12,7 @@ public class SpecialCommand implements Command {
 	
 	public void execute() {
 		GameManager.frameDelay++;
+		
 	}
 	
 	public void undo() {

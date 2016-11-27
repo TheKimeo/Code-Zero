@@ -7,7 +7,7 @@ import Controller.Camera;
 
 public class Tile {
 	
-	public static final int TILE_SIZE = 32;
+	public static final int TILE_SIZE = 36; //32
 	
 	public boolean collidable;
 	public double gravity;

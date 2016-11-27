@@ -64,24 +64,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		InputComponent input = new KeyboardInput(); //new AIInput();
 		PhysicsComponent physics = new LevelPhysics();
 		GraphicsComponent graphics = new EntityGraphics();
-		player = new Entity(input, physics, graphics);
-//        EntityGraphics playerGraphics = (EntityGraphics)player.getGraphics();
-//
-//        BufferedImage playerImages[] = new BufferedImage[4];
-//
-//        try {
-//            playerImages[0] = ImageIO.read(new FileInputStream("Subaru_LeftIdle1.png"));
-//            playerImages[1] = ImageIO.read(new FileInputStream("Subaru_LeftIdle2.png"));
-//            playerImages[2] = ImageIO.read(new FileInputStream("Subaru_RightIdle1.png"));
-//            playerImages[3] = ImageIO.read(new FileInputStream("Subaru_RightIdle2.png"));
-//
-//        }catch (IOException e){
-//            System.out.println("image error loading!!");
-//        }
-//
-//        playerGraphics.setFrames(player, playerImages);
-
-
+		player = new Entity(47, 107, input, physics, graphics); //67, 107
 	}
 	
 	// ready to display
@@ -171,6 +154,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 
 	public int getInputKey(char c) {
 		switch (Character.toString(c).toLowerCase().charAt(0)) {
+			case ' ':
 			case 'w':
 				return InputController.K1;
 			case 'a':

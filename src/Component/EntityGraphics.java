@@ -15,6 +15,7 @@ public class EntityGraphics extends GraphicsComponent {
 	public void setFrame(Entity e, int i) { e.currentFrame = i; }
 	public void setNumFrames(Entity e, int i) { e.numFrames = i; }
 	
+	@SuppressWarnings("unused")
 	public void update(Entity e, Graphics2D g, Camera c) {
 
 		if(e.delay == -1) return;
@@ -33,11 +34,12 @@ public class EntityGraphics extends GraphicsComponent {
 
 
 
-
-//		g.setColor(new Color(0x00FF00));
-//		g.fillRect(e.boundingBox.x - (int) c.x, e.boundingBox.y - (int) c.y, e.boundingBox.width, e.boundingBox.height);
+		if (false) {
+			g.setColor(new Color(0x00FF00));
+			g.fillRect((int) (e.x - c.x), (int) (e.y - c.y), (int) e.width, (int) e.height);
+		}
 //		g.fillRect(10,10,15,15);
-		g.drawImage(getImage(e), e.boundingBox.x - (int) c.x, e.boundingBox.y - (int) c.y, e.boundingBox.width, e.boundingBox.height,null);
+		g.drawImage(getImage(e), (int) (e.x - c.x - e.renderOffsetX), (int) (e.y - c.y - e.renderOffsetY), e.boundingBox.width, e.boundingBox.height,null);
 		
 	}
 	

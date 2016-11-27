@@ -18,9 +18,11 @@ public class LevelPhysics implements PhysicsComponent {
 		for (Command c : commands) {
 			c.execute();
 		}
-		if (e.isRewind) {
-			return;
-		}
+		//if (e.isRewind) {
+		//	frame
+		//	e.x
+		//	return;
+		//}
 		
 		ArrayList<TileStorage> inside = level.getTilesWithin(e);
 		ArrayList<TileStorage> below = level.getTilesBelow(e);
@@ -73,9 +75,6 @@ public class LevelPhysics implements PhysicsComponent {
 
 		collideWithMap(e, level);
 		
-		e.boundingBox.x = (int) e.x;
-		e.boundingBox.y = (int) e.y;
-		
 		if (frame <= e.positions.size()) {
 			e.positions.add(new Pair<Double, Double>(e.x, e.y));
 		} else {
@@ -88,11 +87,11 @@ public class LevelPhysics implements PhysicsComponent {
 			return false;
 		}
 		
-		double crx = e.boundingBox.width / 2.0 + Tile.TILE_SIZE / 2.0;
-		double cry = e.boundingBox.height / 2.0 + Tile.TILE_SIZE / 2.0;
+		double crx = e.width / 2.0 + Tile.TILE_SIZE / 2.0;
+		double cry = e.height / 2.0 + Tile.TILE_SIZE / 2.0;
 		
-		double cx = e.x + e.boundingBox.width / 2.0;
-		double cy = e.y + e.boundingBox.height / 2.0;
+		double cx = e.x + e.width / 2.0;
+		double cy = e.y + e.height / 2.0;
 
 		double distx = cx - tileCenterX;
 		double disty = cy - tileCenterY;
