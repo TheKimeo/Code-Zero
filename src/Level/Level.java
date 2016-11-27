@@ -27,7 +27,7 @@ public class Level {
 	private static Tile TILE_DARK_STONE = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '(', "Textures/StoneDark.png");
 	private static Tile TILE_LEAVES = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '\'', "Textures/Leaves.png");
 	private static Tile TILE_DARK_GRASS = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '6', "Textures/GrassDark.png");
-	private static Tile TILE_DARK_TREE = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '\"', "Textures/WoodHDark.png");		
+	private static Tile TILE_DARK_TREE = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '\"', "Textures/WoodVDark.png");		
 	private static Tile TILE_DARK_DIRT = new Tile(false, true, 0.1152, 0.03456, new Color(70, 30, 0), '~', "Textures/DirtDark.png");
 	
 	public Level(int width, int height) {
