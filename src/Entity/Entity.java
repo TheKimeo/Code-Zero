@@ -95,6 +95,7 @@ public class Entity {
 	public boolean directionAI = true;
 	
 	public boolean warping = false;
+	public boolean lockinput = false;
 	public double destx = 0.0;
 	public double desty = 0.0;
 	private static int ID = 0;
@@ -118,7 +119,7 @@ public class Entity {
 		physics.reset();
 		graphics.reset(this);
 		x = 30.0 * Tile.TILE_SIZE;
-		y = 30.0 * Tile.TILE_SIZE;
+		y = 45.0 * Tile.TILE_SIZE;
 	}
 	
 	public InputComponent getInput() {

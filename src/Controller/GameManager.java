@@ -48,6 +48,9 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	private ArrayList<Entity> ai = new ArrayList<>();
 	
 	public GameManager() {
+		
+		int NUMBER_OF_AI = 0;
+		
 		setPreferredSize(new Dimension(WIDTH, HEIGHT2));
 		setFocusable(true);
 		requestFocus();
@@ -63,7 +66,7 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 		player = new Entity(47, 107, input, physics, graphics); //67, 107
 		
 		InputComponent aiinput = new AIInput();
-		for (int i = 0; i < 20; ++i)
+		for (int i = 0; i < NUMBER_OF_AI; ++i)
 			ai.add(new Entity(47, 107, aiinput, physics, graphics));
 		for (Entity e : ai)
 			e.reset();
@@ -121,8 +124,8 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	//HANDLE INPUT TO APPLICATION
 	private void handleInput(int frame) {
 		for (Entity e : ai)
-			e.getInput().update(frame, e, level);
-		player.getInput().update(frame, player, level);
+			if (!e.lockinput) e.getInput().update(frame, e, level);
+		if (!player.lockinput) player.getInput().update(frame, player, level);
 		InputController.getInstance().update();
 	}
 	
@@ -152,6 +155,17 @@ public class GameManager extends JPanel implements Runnable, KeyListener {
 	
 	
 	private void drawGUI(Graphics2D g){
+		
+		
+		g.setFont(new Font("Ariel", Font.BOLD, 16));
+		
+		g.setColor(Color.GRAY);
+		g.drawString("Santity:", 37, 22);
+		g.setColor(Color.WHITE);
+		g.drawString("Santity:", 35, 20);
+		
+		
+		
 	    g.setColor(new Color(0x757575));
 	    g.fillRect(30,30, (int)player.maxSanitiy*2,20);
         g.setColor(new Color(0x6013AE));

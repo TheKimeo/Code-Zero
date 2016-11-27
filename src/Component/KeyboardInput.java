@@ -31,6 +31,9 @@ public class KeyboardInput implements InputComponent {
 			e.sanitiy -= 10;
 			cs.addCommand(frame, CommandStream.SPECIAL);
 		}
+		if (e.sanitiy <= 0) {
+			cs.addCommand(frame, CommandStream.DEATH);
+		}
 	}
 
 	public void reset() {
