@@ -13,7 +13,7 @@ public class CommandStream {
 	public static int DOWN = 0x4;
 	public static int LEFT = 0x8;
 	public static int RIGHT = 0x10;
-	public static int SPECIAL = 0x11;
+	public static int SPECIAL = 0x20;
 	
 	private ArrayList<Pair<Integer, Integer>> commandList = new ArrayList<>();
 	private boolean isSorted = true;
@@ -40,7 +40,7 @@ public class CommandStream {
 		if (index == -1) {
 			return new ArrayList<>();
 		} else {
-			return bitwiseReverse(commandList.get(index).second());
+			return bitwiseReverse(commandList.get(index).second(), frame);
 		}
 	}
 	
@@ -65,7 +65,7 @@ public class CommandStream {
 		return -1;
 	}
 	
-	public ArrayList<Command> bitwiseReverse(int i) {
+	public ArrayList<Command> bitwiseReverse(int i, int frame) {
 		ArrayList<Command> ret = new ArrayList<>();
 		if ((i & LEFT) == LEFT) {
 			ret.add(new LeftCommand(e));
@@ -80,10 +80,10 @@ public class CommandStream {
 			ret.add(new StopJumpCommand(e));
 		}
 		if ((i & DOWN) == DOWN) {
-		//	ret.add(new JumpCommand());
+			ret.add(new DeathCommand(e));
 		}
 		if ((i & SPECIAL) == SPECIAL) {
-			//ret.add(new SpecialCommand());
+			ret.add(new TimeCommand(e, frame));
 		}
 		return ret;
 	}

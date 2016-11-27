@@ -28,11 +28,6 @@ public class LevelPhysics implements PhysicsComponent {
 		if (e.isWalkingRight == false && e.frames == e.rightWalkFrames) {
 			e.getGraphics().setFrames(e, e.rightIdleFrames, 20);
 		}
-		//if (e.isRewind) {
-		//	frame
-		//	e.x
-		//	return;
-		//}
 		
 		ArrayList<TileStorage> inside = level.getTilesWithin(e);
 		ArrayList<TileStorage> below = level.getTilesBelow(e);
