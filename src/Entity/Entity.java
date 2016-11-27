@@ -94,6 +94,10 @@ public class Entity {
 	
 	public boolean directionAI = true;
 	
+	public boolean warping = false;
+	public double destx = 0.0;
+	public double desty = 0.0;
+	
 	public Entity(double width, double height, InputComponent input, PhysicsComponent physics, GraphicsComponent graphics) {
 		this.input = input;
 		this.physics = physics;

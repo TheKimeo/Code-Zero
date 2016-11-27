@@ -29,6 +29,24 @@ public class LevelPhysics implements PhysicsComponent {
 			e.getGraphics().setFrames(e, e.rightIdleFrames, 20);
 		}
 		
+		if (e.warping) {
+			if (e.currentFrame == 4) {
+				
+				e.x = e.destx;
+				e.y = e.desty;
+				e.dx = 0.0;
+				e.dy = 0.0;
+				e.jumpTime = 0;
+			} else if (e.currentFrame == 8) {
+				e.warping = false;
+				if (e.facing)
+					e.getGraphics().setFrames(e, e.rightIdleFrames, 20);
+				else
+					e.getGraphics().setFrames(e, e.leftIdleFrames, 20);
+			}
+		}
+		
+		
 		ArrayList<TileStorage> inside = level.getTilesWithin(e);
 		ArrayList<TileStorage> below = level.getTilesBelow(e);
 

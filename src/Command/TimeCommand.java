@@ -23,12 +23,10 @@ public class TimeCommand implements Command {
 		
 		e.replay = false;
 		Pair<Double, Double> pos = e.positions.get(destFrame);
-		e.x = pos.first();
-		e.y = pos.second();
-		e.dx = 0.0;
-		e.dy = 0.0;
-		e.jumpTime = 0;
+		e.destx = pos.first();
+		e.desty = pos.second();
 		e.teleportFrame = frame;
+		e.warping = true;
 	}
 	
 	public void undo() {
