@@ -14,7 +14,8 @@ public class AIInput implements InputComponent {
 		if (frame % 10 <= 1)
 			cs.addCommand(frame, CommandStream.JUMP);
 		
-		
+		///if (frame % 100 <= 10)
+		//	cs.addCommand(frame, CommandStream.SPECIAL);
 		
 		if (ThreadLocalRandom.current().nextInt(0, 100) == 0)
 			e.directionAI = !e.directionAI;
